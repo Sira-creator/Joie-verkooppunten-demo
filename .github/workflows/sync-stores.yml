@@ -53,12 +53,12 @@ jobs:
               print(f"ERROR: Could not download sheet. Status: {response.status_code}")
               exit(1)
           
-          # Sla CSV tijdelijk op
-          with open('temp_stores.csv', 'w', encoding='utf-8') as f:
-              f.write(response.text)
+          # Sla CSV tijdelijk op (als bytes om encoding-issues te vermijden)
+          with open('temp_stores.csv', 'wb') as f:
+              f.write(response.content)
           
-          # Lees CSV met pandas
-          df = pd.read_csv('temp_stores.csv')
+          # Lees CSV met pandas (forceer UTF-8)
+          df = pd.read_csv('temp_stores.csv', encoding='utf-8')
           
           print(f"Found {len(df)} stores in spreadsheet")
           
@@ -150,3 +150,4 @@ jobs:
           git add stores.json
           git commit -m "🔄 Auto-sync stores from Google Sheets"
           git push
+
