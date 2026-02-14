@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joie Verkooppunten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        .search-section {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        .btn-location {
+            background-color: #27ae60;
+            color: white;
+            width: 100%;
+        }
+
+        .btn-location:hover {
+            background-color: #229954;
+        }
+
+        .btn-location:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .status-message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .status-info {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            border-left: 4px solid #1976d2;
+        }
+
+        .status-error {
+            background-color: #ffebee;
+            color: #c62828;
+            border-left: 4px solid #c62828;
+        }
+
+        .status-success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-left: 4px solid #2e7d32;
+        }
+
+        .store-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .store-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .store-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .store-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .store-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .store-distance {
+            background-color: #3498db;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .store-address {
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .store-category {
+            display: inline-block;
+            background-color: #ecf0f1;
+            color: #7f8c8d;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .store-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .store-actions a {
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-maps {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-maps:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-website {
+            background-color: #9b59b6;
+            color: white;
+        }
+
+        .btn-website:hover {
+            background-color: #8e44ad;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            background: white;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            .store-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .store-distance {
+                align-self: flex-start;
+            }
+
+            .store-actions {
+                flex-direction: column;
+            }
+
+            .store-actions a {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vind Joie verkooppunten in België en Luxemburg</h1>
+        <p class="subtitle">Tik op 'Dichtstbijzijnde' om te sorteren.</p>
+
+        <div class="search-section">
+            <div class="input-group">
+                <input type="text" id="locationInput" placeholder="Voer adres of postcode in (bijv. 1000 Brussel)">
+                <button class="btn-primary" onclick="searchByAddress()">Zoeken</button>
+                <button class="btn-secondary" onclick="resetSearch()">Reset</button>
+            </div>
+            <button class="btn-location" id="useLocationBtn" onclick="useMyLocation()">
+                📍 Gebruik mijn locatie
+            </button>
+            <div id="statusMessage"></div>
+        </div>
+
+        <div id="storeList" class="store-list">
+            <div class="loading">Winkels laden...</div>
+        </div>
+    </div>
+
+    <script>
+        // Store data met coördinaten
+        const stores = [
+  {
+    "name": "Dreambaby Bree",
+    "address": "Regenboogstraat 12, 3960 Bree, België",
+    "postalCode": "3960",
+    "city": "Bree",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.1418942,
+    "lng": 5.632484,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.1418942,5.632484"
+  },
+  {
+    "name": "Dreambaby Brugge",
+    "address": "Blankenbergsesteenweg 420, 8000 Brugge, België",
+    "postalCode": "8000",
+    "city": "Brugge",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.2338219,
+    "lng": 3.2127283,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.2338219,3.2127283"
+  },
+  {
+    "name": "Dreambaby Charleroi",
+    "address": "Rue de la Montagne 162, 6000 Charleroi, België",
+    "postalCode": "6000",
+    "city": "Charleroi",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.4168166,
+    "lng": 4.449374,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.4168166,4.449374"
+  },
+  {
+    "name": "Dreambaby Denderleeuw",
+    "address": "Kasteelstraat 28-30, 9470 Denderleeuw, België",
+    "postalCode": "9470",
+    "city": "Denderleeuw",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.8843903,
+    "lng": 4.0665468,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.8843903,4.0665468"
+  },
+  {
+    "name": "Dreambaby Dilbeek",
+    "address": "Ninoofsesteenweg 629, 1700 Dilbeek, België",
+    "postalCode": "1700",
+    "city": "Dilbeek",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.855497,
+    "lng": 4.2458365,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.855497,4.2458365"
+  },
+  {
+    "name": "Dreambaby Gent",
+    "address": "Corneel Heymanslaan 17, 9000 Gent, België",
+    "postalCode": "9000",
+    "city": "Gent",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.0658568,
+    "lng": 3.7253367,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.0658568,3.7253367"
+  },
+  {
+    "name": "Dreambaby Halle",
+    "address": "Edingensesteenweg 196, 1500 Halle, België",
+    "postalCode": "1500",
+    "city": "Halle",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.7305379,
+    "lng": 4.2403173,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.7305379,4.2403173"
+  },
+  {
+    "name": "Dreambaby Herstal",
+    "address": "Rue des Naiveux 14, 4040 Herstal, België",
+    "postalCode": "4040",
+    "city": "Herstal",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.6790081,
+    "lng": 5.6244854,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.6790081,5.6244854"
+  },
+  {
+    "name": "Dreambaby Jemappes",
+    "address": "Avenue Maréchal Foch 934, 7012 Jemappes, België",
+    "postalCode": "7012",
+    "city": "Jemappes",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.448422,
+    "lng": 3.8894392,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.448422,3.8894392"
+  },
+  {
+    "name": "Dreambaby Kuurne",
+    "address": "Ringlaan 6, 8520 Kuurne, België",
+    "postalCode": "8520",
+    "city": "Kuurne",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.8597083,
+    "lng": 3.273329,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.8597083,3.273329"
+  },
+  {
+    "name": "Dreambaby La Louvière",
+    "address": "Rue de la Franco-Belge 228, 7100 La Louvière, België",
+    "postalCode": "7100",
+    "city": "La Louvière",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.4791337,
+    "lng": 4.1911631,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.4791337,4.1911631"
+  },
+  {
+    "name": "Dreambaby Lede",
+    "address": "Wichelsesteenweg 194, 9340 Lede, België",
+    "postalCode": "9340",
+    "city": "Lede",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.967285,
+    "lng": 3.9447388,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.967285,3.9447388"
+  },
+  {
+    "name": "Dreambaby Leuven",
+    "address": "Diestsesteenweg 60, 3000 Leuven, België",
+    "postalCode": "3000",
+    "city": "Leuven",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.8778164,
+    "lng": 4.7016456,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.8778164,4.7016456"
+  },
+  {
+    "name": "Dreambaby Lier",
+    "address": "Antwerpsesteenweg 342, 2500 Lier, België",
+    "postalCode": "2500",
+    "city": "Lier",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.1192781,
+    "lng": 4.5616874,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.1192781,4.5616874"
+  },
+  {
+    "name": "Dreambaby Lochristi",
+    "address": "Antwerpsesteenweg 36, 9080 Lochristi, België",
+    "postalCode": "9080",
+    "city": "Lochristi",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.0998499,
+    "lng": 3.8461265,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.0998499,3.8461265"
+  },
+  {
+    "name": "Dreambaby Mechelen",
+    "address": "Liersesteenweg 432, 2800 Mechelen, België",
+    "postalCode": "2800",
+    "city": "Mechelen",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.0347769,
+    "lng": 4.4690219,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.0347769,4.4690219"
+  },
+  {
+    "name": "Dreambaby Merksem",
+    "address": "Bredabaan 811, 2170 Merksem, België",
+    "postalCode": "2170",
+    "city": "Merksem",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.2491564,
+    "lng": 4.4442091,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.2491564,4.4442091"
+  },
+  {
+    "name": "Dreambaby Meslin-l'Évêque",
+    "address": "Chaussée de Bruxelles 335, 7822 Meslin-l'Évêque, België",
+    "postalCode": "7822",
+    "city": "Meslin-l'Évêque",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.6551081,
+    "lng": 3.8525151,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.6551081,3.8525151"
+  },
+  {
+    "name": "Dreambaby Mol",
+    "address": "Molderdijk 65, 2400 Mol, België",
+    "postalCode": "2400",
+    "city": "Mol",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.2377662,
+    "lng": 5.1962273,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.2377662,5.1962273"
+  },
+  {
+    "name": "Dreambaby Namen",
+    "address": "Chaussée de Liège 477, 5100 Namen, België",
+    "postalCode": "5100",
+    "city": "Namen",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.4270746,
+    "lng": 4.900257,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.4270746,4.900257"
+  },
+  {
+    "name": "Dreambaby Oostende",
+    "address": "Torhoutsesteenweg 694, 8400 Oostende, België",
+    "postalCode": "8400",
+    "city": "Oostende",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.2152889,
+    "lng": 2.9335801,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.2152889,2.9335801"
+  },
+  {
+    "name": "Dreambaby Roeselare",
+    "address": "Brugsesteenweg 353, 8800 Roeselare, België",
+    "postalCode": "8800",
+    "city": "Roeselare",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.9368345,
+    "lng": 3.1335642,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.9368345,3.1335642"
+  },
+  {
+    "name": "Dreambaby Doornik",
+    "address": "Chaussée de Bruxelles 376, 7500 Doornik, België",
+    "postalCode": "7500",
+    "city": "Doornik",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.5893059,
+    "lng": 3.3720719,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.5893059,3.3720719"
+  },
+  {
+    "name": "Dreambaby Turnhout",
+    "address": "Nieuwe Kaai 31, 2300 Turnhout, België",
+    "postalCode": "2300",
+    "city": "Turnhout",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.3233812,
+    "lng": 4.948461,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.3233812,4.948461"
+  },
+  {
+    "name": "Dreambaby Waterloo",
+    "address": "Chaussée de Bruxelles 319, 1410 Waterloo, België",
+    "postalCode": "1410",
+    "city": "Waterloo",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.7032864,
+    "lng": 4.4084276,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.7032864,4.4084276"
+  },
+  {
+    "name": "Dreambaby Wilrijk",
+    "address": "Boomsesteenweg 546, 2610 Wilrijk, België",
+    "postalCode": "2610",
+    "city": "Wilrijk",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 51.1642899,
+    "lng": 4.3879102,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=51.1642899,4.3879102"
+  },
+  {
+    "name": "Dreambaby Zaventem",
+    "address": "Leuvensesteenweg 615, 1930 Zaventem, België",
+    "postalCode": "1930",
+    "city": "Zaventem",
+    "country": "België",
+    "website": "https://www.dreambaby.be",
+    "category": "Babywinkel",
+    "lat": 50.8850775,
+    "lng": 4.4862048,
+    "googleMapsUrl": "https://www.google.com/maps/search/?api=1&query=50.8850775,4.4862048"
+  }
+];
+
+        let userLocation = null;
+
+        // Bereken afstand tussen twee coördinaten (Haversine formule)
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371; // Radius van de aarde in km
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = 
+                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return R * c;
+        }
+
+        // Toon status bericht
+        function showStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.innerHTML = `<div class="status-message status-${type}">${message}</div>`;
+            
+            if (type === 'success' || type === 'error') {
+                setTimeout(() => {
+                    statusDiv.innerHTML = '';
+                }, 5000);
+            }
+        }
+
+        // Render winkel kaart
+        function renderStoreCard(store, distance = null) {
+            return `
+                <div class="store-card">
+                    <div class="store-header">
+                        <div>
+                            <div class="store-name">${store.name}</div>
+                            <div class="store-category">${store.category}</div>
+                        </div>
+                        ${distance !== null ? `<div class="store-distance">${distance.toFixed(1)} km</div>` : ''}
+                    </div>
+                    <div class="store-address">${store.address}</div>
+                    <div class="store-actions">
+                        <a href="${store.googleMapsUrl}" target="_blank" class="btn-maps">📍 Bekijk op kaart</a>
+                        <a href="${store.website}" target="_blank" class="btn-website">🌐 Website</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render alle winkels
+        function renderStores(sortedStores = null) {
+            const storeList = document.getElementById('storeList');
+            const storesToRender = sortedStores || stores;
+
+            if (storesToRender.length === 0) {
+                storeList.innerHTML = '<div class="no-results">Geen winkels gevonden</div>';
+                return;
+            }
+
+            storeList.innerHTML = storesToRender.map(store => {
+                const distance = userLocation ? 
+                    calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng) : 
+                    null;
+                return renderStoreCard(store, distance);
+            }).join('');
+        }
+
+        // Gebruik huidige locatie
+        function useMyLocation() {
+            const btn = document.getElementById('useLocationBtn');
+            
+            if (!navigator.geolocation) {
+                showStatus('Geolocatie wordt niet ondersteund door je browser', 'error');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Locatie ophalen...';
+            showStatus('Locatie wordt opgehaald...', 'info');
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    userLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    };
+
+                    // Sorteer winkels op afstand
+                    const sortedStores = stores.map(store => ({
+                        ...store,
+                        distance: calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng)
+                    })).sort((a, b) => a.distance - b.distance);
+
+                    renderStores(sortedStores);
+                    showStatus(`✓ Gesorteerd op afstand vanaf jouw locatie`, 'success');
+                    
+                    btn.disabled = false;
+                    btn.textContent = '📍 Gebruik mijn locatie';
+                },
+                (error) => {
+                    let errorMessage = 'Kon locatie niet ophalen. ';
+                    if (error.code === error.PERMISSION_DENIED) {
+                        errorMessage += 'Geef toestemming voor locatietoegang in je browser.';
+                    } else if (error.code === error.POSITION_UNAVAILABLE) {
+                        errorMessage += 'Locatie informatie is niet beschikbaar.';
+                    } else {
+                        errorMessage += 'Er is een timeout opgetreden.';
+                    }
+                    
+                    showStatus(errorMessage, 'error');
+                    btn.disabled = false;
+                    btn.textContent = '📍 Gebruik mijn locatie';
+                }
+            );
+        }
+
+        // Zoek op adres/postcode
+        async function searchByAddress() {
+            const input = document.getElementById('locationInput').value.trim();
+            
+            if (!input) {
+                showStatus('Voer een adres of postcode in', 'error');
+                return;
+            }
+
+            showStatus('Locatie zoeken...', 'info');
+
+            try {
+                const response = await fetch(
+                    `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(input)}, Belgium&format=json&limit=1`,
+                    {
+                        headers: {
+                            'User-Agent': 'JoieStoreLocator/1.0'
+                        }
+                    }
+                );
+
+                const data = await response.json();
+
+                if (data && data.length > 0) {
+                    userLocation = {
+                        lat: parseFloat(data[0].lat),
+                        lng: parseFloat(data[0].lon)
+                    };
+
+                    // Sorteer winkels op afstand
+                    const sortedStores = stores.map(store => ({
+                        ...store,
+                        distance: calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng)
+                    })).sort((a, b) => a.distance - b.distance);
+
+                    renderStores(sortedStores);
+                    showStatus(`✓ Gesorteerd op afstand vanaf "${input}"`, 'success');
+                } else {
+                    showStatus('Locatie niet gevonden. Probeer een andere postcode of stad.', 'error');
+                }
+            } catch (error) {
+                showStatus('Er ging iets mis bij het zoeken. Probeer opnieuw.', 'error');
+                console.error('Geocoding error:', error);
+            }
+        }
+
+        // Reset zoekactie
+        function resetSearch() {
+            userLocation = null;
+            document.getElementById('locationInput').value = '';
+            document.getElementById('statusMessage').innerHTML = '';
+            renderStores();
+        }
+
+        // Enter key support voor zoeken
+        document.getElementById('locationInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchByAddress();
+            }
+        });
+
+        // Initialiseer bij laden
+        document.addEventListener('DOMContentLoaded', function() {
+            renderStores();
+        });
+    </script>
+</body>
+</html>
