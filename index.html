@@ -265,11 +265,26 @@
             }
 
             .subtitle {
-                font-size: 16px;
+                font-size: 18px;
             }
 
             .input-group {
-                flex-direction: column;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .input-group input[type="text"] {
+                flex: 1 1 100%;
+                margin-bottom: 8px;
+            }
+
+            .input-group .btn-primary {
+                flex: 0 0 calc(66.666% - 4px);
+            }
+
+            .input-group .btn-secondary {
+                flex: 0 0 calc(33.333% - 4px);
             }
 
             .store-header {
@@ -281,12 +296,9 @@
                 align-self: flex-start;
             }
 
-            .store-actions {
-                flex-direction: column;
-            }
-
             .store-actions a {
                 text-align: center;
+                flex: 1;
             }
         }
     </style>
@@ -294,7 +306,7 @@
 <body>
     <div class="container">
         <h1>Vind Joie bij jou in de buurt</h1>
-        <p class="subtitle">Ontdek onze verkooppunten in België en Luxemburg</p>
+        <p class="subtitle">Ontdek onze verkooppunten in Belgi&euml; en Luxemburg.</p>
 
         <div class="search-section">
             <div class="input-group">
