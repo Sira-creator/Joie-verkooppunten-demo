@@ -1,1 +1,149 @@
+name: Sync Stores from Google Sheets
 
+on:
+  schedule:
+    # Draait elke 5 minuten
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # Manueel kunnen triggeren
+  
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Install dependencies
+        run: |
+          pip install requests pandas
+          
+      - name: Download and process Google Sheet
+        env:
+          SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+        run: |
+          python << 'EOF'
+          import os
+          import json
+          import requests
+          import pandas as pd
+          import time
+          
+          # Haal Sheet ID op uit environment variable
+          sheet_id = os.environ.get('SHEET_ID')
+          if not sheet_id:
+              print("ERROR: GOOGLE_SHEET_ID not set in secrets!")
+              exit(1)
+          
+          # Download CSV export van Google Sheets
+          csv_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
+          
+          print(f"Downloading data from Google Sheets...")
+          response = requests.get(csv_url)
+          
+          if response.status_code != 200:
+              print(f"ERROR: Could not download sheet. Status: {response.status_code}")
+              exit(1)
+          
+          # Sla CSV tijdelijk op
+          with open('temp_stores.csv', 'w', encoding='utf-8') as f:
+              f.write(response.text)
+          
+          # Lees CSV met pandas
+          df = pd.read_csv('temp_stores.csv')
+          
+          print(f"Found {len(df)} stores in spreadsheet")
+          
+          # Functie voor geocoding van nieuwe adressen
+          def geocode_address(address, city, postal_code, country):
+              """Haal coördinaten op voor adressen zonder lat/lng"""
+              base_url = "https://nominatim.openstreetmap.org/search"
+              query = f"{postal_code} {city}, {country}"
+              
+              params = {
+                  'q': query,
+                  'format': 'json',
+                  'limit': 1,
+                  'countrycodes': 'be,lu'
+              }
+              
+              headers = {
+                  'User-Agent': 'JoieStoreLocator/1.0'
+              }
+              
+              try:
+                  response = requests.get(base_url, params=params, headers=headers)
+                  data = response.json()
+                  
+                  if data and len(data) > 0:
+                      return float(data[0]['lat']), float(data[0]['lon'])
+              except Exception as e:
+                  print(f"Geocoding error for {city}: {e}")
+              
+              return None, None
+          
+          # Verwerk elke rij
+          stores = []
+          geocoded_count = 0
+          
+          for idx, row in df.iterrows():
+              # Check of lat/lng leeg zijn of 0
+              lat = row.get('Latitude')
+              lng = row.get('Longitude')
+              
+              # Als lat/lng ontbreken, probeer te geocoden
+              if pd.isna(lat) or pd.isna(lng) or lat == 0 or lng == 0:
+                  print(f"Geocoding: {row['Store Name']}")
+                  lat, lng = geocode_address(
+                      row['Address'],
+                      row['City'],
+                      row['Postal Code'],
+                      row['Country']
+                  )
+                  geocoded_count += 1
+                  time.sleep(1.5)  # Rate limiting voor Nominatim
+              
+              # Alleen toevoegen als we coördinaten hebben
+              if lat and lng:
+                  store = {
+                      'name': str(row['Store Name']),
+                      'address': str(row['Address']),
+                      'postalCode': str(row['Postal Code']),
+                      'city': str(row['City']),
+                      'country': str(row['Country']),
+                      'website': str(row['Website']),
+                      'category': str(row['Category']),
+                      'lat': float(lat),
+                      'lng': float(lng)
+                  }
+                  stores.append(store)
+              else:
+                  print(f"WARNING: Skipping {row['Store Name']} - no coordinates")
+          
+          print(f"Processed {len(stores)} stores ({geocoded_count} newly geocoded)")
+          
+          # Schrijf naar stores.json
+          with open('stores.json', 'w', encoding='utf-8') as f:
+              json.dump(stores, f, ensure_ascii=False, indent=2)
+          
+          print("✓ stores.json updated successfully")
+          EOF
+          
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet stores.json || echo "changed=true" >> $GITHUB_OUTPUT
+          
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add stores.json
+          git commit -m "🔄 Auto-sync stores from Google Sheets"
+          git push
