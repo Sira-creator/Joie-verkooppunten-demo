@@ -1,5 +1,8 @@
 name: Sync Stores from Google Sheets
 
+permissions:
+  contents: write
+
 on:
   schedule:
     # Draait elke 5 minuten
