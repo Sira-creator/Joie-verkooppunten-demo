@@ -1,194 +1,91 @@
 name: Sync Stores from Google Sheets
 
-permissions:
-  contents: write
-
 on:
   schedule:
-    # Draait elke 5 minuten
-    - cron: '*/5 * * * *'
-  workflow_dispatch: # Manueel kunnen triggeren
-  
+    # Draait elke dag om 6:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # Maakt handmatige uitvoering mogelijk
+
 jobs:
   sync:
     runs-on: ubuntu-latest
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-        
+        uses: actions/checkout@v3
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-          
+
       - name: Install dependencies
         run: |
-          pip install requests pandas
-          
-      - name: Download and process Google Sheet
+          pip install pandas openpyxl requests
+
+      - name: Fetch and convert Google Sheet to JSON
         env:
-          SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
         run: |
           python << 'EOF'
-          import os
-          import json
-          import requests
           import pandas as pd
-          import time
-          import re
-          
-          # Haal Sheet ID op uit environment variable
-          sheet_id = os.environ.get('SHEET_ID')
+          import json
+          import os
+
+          # Haal Google Sheet ID op uit environment variable
+          sheet_id = os.environ.get('GOOGLE_SHEET_ID')
           if not sheet_id:
-              print("ERROR: GOOGLE_SHEET_ID not set in secrets!")
-              exit(1)
-          
-          # Download CSV export van Google Sheets
-          csv_url = f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv"
-          
-          print(f"Downloading data from Google Sheets...")
-          response = requests.get(csv_url)
-          
-          if response.status_code != 200:
-              print(f"ERROR: Could not download sheet. Status: {response.status_code}")
-              exit(1)
-          
-          # Sla CSV tijdelijk op (als bytes om encoding-issues te vermijden)
-          with open('temp_stores.csv', 'wb') as f:
-              f.write(response.content)
-          
-          # Lees CSV met pandas (forceer UTF-8)
-          df = pd.read_csv('temp_stores.csv', encoding='utf-8')
-          
-          print(f"Found {len(df)} stores in spreadsheet")
-          
-          # Functie om Place ID te extraheren uit Google Maps URL
-          def extract_place_id_from_url(url):
-              """Extraheer Place ID uit Google Maps URL"""
-              if pd.isna(url) or not url or url.strip() == '':
-                  return None
-              
-              # Probeer verschillende patronen
-              # Patroon 1: /place/NAME/@LAT,LNG,ZOOM/data=!...!1s0xHEX:0xHEX
-              match = re.search(r'!1s(0x[a-f0-9]+:0x[a-f0-9]+)', url)
-              if match:
-                  hex_id = match.group(1)
-                  # Converteer hex ID naar Place ID (dit is een vereenvoudigde versie)
-                  # Voor productie: gebruik Google Places API voor betrouwbare conversie
-                  return hex_id
-              
-              # Patroon 2: query_place_id=ChIJ...
-              match = re.search(r'query_place_id=([A-Za-z0-9_-]+)', url)
-              if match:
-                  return match.group(1)
-              
-              # Patroon 3: place_id=ChIJ...
-              match = re.search(r'place_id=([A-Za-z0-9_-]+)', url)
-              if match:
-                  return match.group(1)
-              
-              return None
-          
-          # Functie voor geocoding van nieuwe adressen
-          def geocode_address(address, city, postal_code, country):
-              """Haal coördinaten op voor adressen zonder lat/lng"""
-              base_url = "https://nominatim.openstreetmap.org/search"
-              query = f"{postal_code} {city}, {country}"
-              
-              params = {
-                  'q': query,
-                  'format': 'json',
-                  'limit': 1,
-                  'countrycodes': 'be,lu'
-              }
-              
-              headers = {
-                  'User-Agent': 'JoieStoreLocator/1.0'
-              }
-              
-              try:
-                  response = requests.get(base_url, params=params, headers=headers)
-                  data = response.json()
-                  
-                  if data and len(data) > 0:
-                      return float(data[0]['lat']), float(data[0]['lon'])
-              except Exception as e:
-                  print(f"Geocoding error for {city}: {e}")
-              
-              return None, None
-          
-          # Verwerk elke rij
+              raise ValueError("GOOGLE_SHEET_ID is niet ingesteld in GitHub Secrets")
+
+          # Construeer de export URL (CSV formaat)
+          # Vervang 'stores_corrected' door de naam van je sheet tab indien anders
+          sheet_name = 'stores_corrected'
+          url = f'https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}'
+
+          # Lees de spreadsheet
+          df = pd.read_csv(url)
+
+          # Converteer naar JSON met meertalige ondersteuning
           stores = []
-          geocoded_count = 0
-          place_id_count = 0
-          
-          for idx, row in df.iterrows():
-              # Check of lat/lng leeg zijn of 0
-              lat = row.get('Latitude')
-              lng = row.get('Longitude')
+          for _, row in df.iterrows():
+              store = {
+                  'name': row['Store Name'],
+                  'address': row['Address'],
+                  'postalCode': str(row['Postal Code']),
+                  'city': row['City'],
+                  'country': row['Country'],
+                  'website': row['Website'],
+                  'category': row['Category'],
+                  'lat': float(row['Latitude']),
+                  'lng': float(row['Longitude'])
+              }
               
-              # Als lat/lng ontbreken, probeer te geocoden
-              if pd.isna(lat) or pd.isna(lng) or lat == 0 or lng == 0:
-                  print(f"Geocoding: {row['Store Name']}")
-                  lat, lng = geocode_address(
-                      row['Address'],
-                      row['City'],
-                      row['Postal Code'],
-                      row['Country']
-                  )
-                  geocoded_count += 1
-                  time.sleep(1.5)  # Rate limiting voor Nominatim
+              # Voeg Place ID toe indien aanwezig
+              if pd.notna(row.get('Place ID')) and str(row['Place ID']).strip():
+                  store['place_id'] = str(row['Place ID'])
               
-              # Alleen toevoegen als we coördinaten hebben
-              if lat and lng:
-                  store = {
-                      'name': str(row['Store Name']),
-                      'address': str(row['Address']),
-                      'postalCode': str(row['Postal Code']),
-                      'city': str(row['City']),
-                      'country': str(row['Country']),
-                      'website': str(row['Website']),
-                      'category': str(row['Category']),
-                      'lat': float(lat),
-                      'lng': float(lng)
-                  }
-                  
-                  # Probeer Place ID te extraheren uit Google Maps URL kolom (indien aanwezig)
-                  if 'Google Maps URL' in row and not pd.isna(row['Google Maps URL']):
-                      place_id = extract_place_id_from_url(row['Google Maps URL'])
-                      if place_id:
-                          store['place_id'] = place_id
-                          place_id_count += 1
-                  
-                  # Alternatief: directe Place ID kolom (indien aanwezig)
-                  elif 'Place ID' in row and not pd.isna(row['Place ID']) and str(row['Place ID']).strip() != '':
-                      store['place_id'] = str(row['Place ID']).strip()
-                      place_id_count += 1
-                  
-                  stores.append(store)
-              else:
-                  print(f"WARNING: Skipping {row['Store Name']} - no coordinates")
-          
-          print(f"Processed {len(stores)} stores ({geocoded_count} newly geocoded, {place_id_count} with Place IDs)")
-          
-          # Schrijf naar stores.json
+              # Voeg Franse vertalingen toe indien aanwezig
+              if 'Store Name FR' in row and pd.notna(row['Store Name FR']):
+                  store['name_fr'] = row['Store Name FR']
+              if 'Address FR' in row and pd.notna(row['Address FR']):
+                  store['address_fr'] = row['Address FR']
+              if 'City FR' in row and pd.notna(row['City FR']):
+                  store['city_fr'] = row['City FR']
+              if 'Category FR' in row and pd.notna(row['Category FR']):
+                  store['category_fr'] = row['Category FR']
+              
+              stores.append(store)
+
+          # Schrijf naar JSON bestand
           with open('stores.json', 'w', encoding='utf-8') as f:
               json.dump(stores, f, ensure_ascii=False, indent=2)
-          
-          print("✓ stores.json updated successfully")
+
+          print(f"✓ Succesvol {len(stores)} winkels gesynchroniseerd")
           EOF
-          
-      - name: Check for changes
-        id: check_changes
-        run: |
-          git diff --quiet stores.json || echo "changed=true" >> $GITHUB_OUTPUT
-          
+
       - name: Commit and push if changed
-        if: steps.check_changes.outputs.changed == 'true'
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
           git add stores.json
-          git commit -m "🔄 Auto-sync stores from Google Sheets (with Place IDs)"
-          git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update stores.json from Google Sheets" && git push)
