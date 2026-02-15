@@ -8,7 +8,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.1418942,
-    "lng": 5.632484
+    "lng": 5.632484,
+    "place_id": "0x47c0d3dd34324f01:0x93fda464b62e1fe2"
   },
   {
     "name": "Dreambaby Brugge",
@@ -19,18 +20,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.2338219,
-    "lng": 3.2127283
-  },
-  {
-    "name": "Dreambaby Charleroi",
-    "address": "Av. de Philippeville 229, 6001 Charleroi, België",
-    "postalCode": "6001",
-    "city": "Charleroi",
-    "country": "België",
-    "website": "https://www.dreambaby.be",
-    "category": "Babywinkel",
-    "lat": 50.3953104,
-    "lng": 4.4544676
+    "lng": 3.2127283,
+    "place_id": "0x47c3572a63b8253b:0xc03878a4e0bb8154"
   },
   {
     "name": "Dreambaby Denderleeuw",
@@ -41,7 +32,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.8843903,
-    "lng": 4.0665468
+    "lng": 4.0665468,
+    "place_id": "0x47c3bc6eccedc535:0xea1b0a70ac6a75a3"
   },
   {
     "name": "Dreambaby Dilbeek",
