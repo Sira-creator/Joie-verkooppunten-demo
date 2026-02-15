@@ -2,9 +2,9 @@ name: Sync Stores from Google Sheets
 
 on:
   schedule:
-    # Draait elke dag om 6:00 UTC
-    - cron: '0 6 * * *'
-  workflow_dispatch:  # Maakt handmatige uitvoering mogelijk
+    # Draait elke 5 minuten
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # Manueel kunnen triggeren
 
 jobs:
   sync:
