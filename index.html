@@ -602,12 +602,20 @@
                 return;
             }
 
-            storeList.innerHTML = storesToRender.map(store => {
-                const distance = userLocation ? 
-                    calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng) : 
-                    null;
-                return renderStoreCard(store, distance);
-            }).join('');
+storeList.innerHTML = storesToRender
+    .filter(store => 
+        typeof store.lat === 'number' &&
+        typeof store.lng === 'number' &&
+        !isNaN(store.lat) &&
+        !isNaN(store.lng)
+    )
+    .map(store => {
+        const distance = userLocation
+            ? calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng)
+            : null;
+        return renderStoreCard(store, distance);
+    })
+    .join('');
         }
 
         // Gebruik huidige locatie
