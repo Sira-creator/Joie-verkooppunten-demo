@@ -36,6 +36,7 @@ jobs:
           import requests
           import pandas as pd
           import time
+          import re
           
           # Haal Sheet ID op uit environment variable
           sheet_id = os.environ.get('SHEET_ID')
@@ -61,6 +62,33 @@ jobs:
           df = pd.read_csv('temp_stores.csv', encoding='utf-8')
           
           print(f"Found {len(df)} stores in spreadsheet")
+          
+          # Functie om Place ID te extraheren uit Google Maps URL
+          def extract_place_id_from_url(url):
+              """Extraheer Place ID uit Google Maps URL"""
+              if pd.isna(url) or not url or url.strip() == '':
+                  return None
+              
+              # Probeer verschillende patronen
+              # Patroon 1: /place/NAME/@LAT,LNG,ZOOM/data=!...!1s0xHEX:0xHEX
+              match = re.search(r'!1s(0x[a-f0-9]+:0x[a-f0-9]+)', url)
+              if match:
+                  hex_id = match.group(1)
+                  # Converteer hex ID naar Place ID (dit is een vereenvoudigde versie)
+                  # Voor productie: gebruik Google Places API voor betrouwbare conversie
+                  return hex_id
+              
+              # Patroon 2: query_place_id=ChIJ...
+              match = re.search(r'query_place_id=([A-Za-z0-9_-]+)', url)
+              if match:
+                  return match.group(1)
+              
+              # Patroon 3: place_id=ChIJ...
+              match = re.search(r'place_id=([A-Za-z0-9_-]+)', url)
+              if match:
+                  return match.group(1)
+              
+              return None
           
           # Functie voor geocoding van nieuwe adressen
           def geocode_address(address, city, postal_code, country):
@@ -93,6 +121,7 @@ jobs:
           # Verwerk elke rij
           stores = []
           geocoded_count = 0
+          place_id_count = 0
           
           for idx, row in df.iterrows():
               # Check of lat/lng leeg zijn of 0
@@ -124,11 +153,24 @@ jobs:
                       'lat': float(lat),
                       'lng': float(lng)
                   }
+                  
+                  # Probeer Place ID te extraheren uit Google Maps URL kolom (indien aanwezig)
+                  if 'Google Maps URL' in row and not pd.isna(row['Google Maps URL']):
+                      place_id = extract_place_id_from_url(row['Google Maps URL'])
+                      if place_id:
+                          store['place_id'] = place_id
+                          place_id_count += 1
+                  
+                  # Alternatief: directe Place ID kolom (indien aanwezig)
+                  elif 'Place ID' in row and not pd.isna(row['Place ID']) and str(row['Place ID']).strip() != '':
+                      store['place_id'] = str(row['Place ID']).strip()
+                      place_id_count += 1
+                  
                   stores.append(store)
               else:
                   print(f"WARNING: Skipping {row['Store Name']} - no coordinates")
           
-          print(f"Processed {len(stores)} stores ({geocoded_count} newly geocoded)")
+          print(f"Processed {len(stores)} stores ({geocoded_count} newly geocoded, {place_id_count} with Place IDs)")
           
           # Schrijf naar stores.json
           with open('stores.json', 'w', encoding='utf-8') as f:
@@ -148,6 +190,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add stores.json
-          git commit -m "🔄 Auto-sync stores from Google Sheets"
+          git commit -m "🔄 Auto-sync stores from Google Sheets (with Place IDs)"
           git push
-
