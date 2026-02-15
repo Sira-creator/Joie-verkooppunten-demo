@@ -361,10 +361,15 @@
             return R * c;
         }
 
-        // Genereer Google Maps URL naar officiële bedrijfspagina
-        function getGoogleMapsUrl(storeName) {
-            const formattedName = storeName.replace(/\s+/g, '+');
-            return `https://www.google.com/maps/place/${formattedName}`;
+        // Genereer Google Maps URL met Place ID (indien beschikbaar) of fallback naar naam+adres
+        function getGoogleMapsUrl(store) {
+            // Als de winkel een Place ID heeft, gebruik die voor perfecte mobiele ervaring
+            if (store.place_id) {
+                return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.name)}&query_place_id=${store.place_id}`;
+            }
+            // Fallback: gebruik naam + adres voor zoekfunctie
+            const query = encodeURIComponent(store.name + ', ' + store.address);
+            return `https://www.google.com/maps/search/?api=1&query=${query}`;
         }
 
         // Toon status bericht
@@ -381,7 +386,7 @@
 
         // Render winkel kaart
         function renderStoreCard(store, distance = null) {
-            const mapsUrl = getGoogleMapsUrl(store.name);
+            const mapsUrl = getGoogleMapsUrl(store);
             
             return `
                 <div class="store-card">
