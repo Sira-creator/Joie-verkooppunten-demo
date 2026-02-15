@@ -1,5 +1,21 @@
 [
   {
+    "name": "Babylux Conceptstore Waregem",
+    "address": "Gentseweg 604, 8793 Waregem, België",
+    "postalCode": "8793",
+    "city": "Waregem",
+    "country": "België",
+    "website": "https://www.babylux.be/nl",
+    "category": "Babywinkel",
+    "lat": 50.9032227,
+    "lng": 3.4098142,
+    "place_id": "0x47c33f71f8fc0185:0x95814a2d57ac5c24",
+    "name_fr": "Babylux Conceptstore Waregem",
+    "address_fr": "Gentseweg 604, 8793 Waregem, Belgique",
+    "city_fr": "Waregem",
+    "category_fr": "Magasin de bébé"
+  },
+  {
     "name": "Dreambaby Bree",
     "address": "Regenboogstraat 12, 3960 Bree, België",
     "postalCode": "3960",
@@ -48,19 +64,19 @@
     "category_fr": "Magasin de bébé"
   },
   {
-    "name": "Dreambaby Groot Bijgaarden",
-    "address": "Brusselstraat 12, 1702 Dilbeek",
-    "postalCode": "1702",
-    "city": "Dilbeek",
+    "name": "Dreambaby Doornik",
+    "address": "Chaussée de Bruxelles 376, 7500 Doornik, België",
+    "postalCode": "7500",
+    "city": "Doornik",
     "country": "België",
     "website": "https://www.dreambaby.be/search?q=joie",
     "category": "Babywinkel",
-    "lat": 50.8680146,
-    "lng": 4.2770022,
-    "place_id": "0x47c3c12310b37c0f:0xdc1324701924c388",
-    "name_fr": "Dreambaby Groot Bijgaarden",
-    "address_fr": "Brusselstraat 12, 1702 Dilbeek",
-    "city_fr": "Dilbeek",
+    "lat": 50.6034406,
+    "lng": 3.4245977,
+    "place_id": "0x47c2e04c1a31f57b:0x331984cb044e5bd7",
+    "name_fr": "Dreambaby Tournai",
+    "address_fr": "Chaussée de Bruxelles 376, 7500 Tournai, Belgique",
+    "city_fr": "Tournai",
     "category_fr": "Magasin de bébé"
   },
   {
@@ -77,6 +93,22 @@
     "name_fr": "Dreambaby Gand",
     "address_fr": "Corneel Heymanslaan 17, 9000 Gand, Belgique",
     "city_fr": "Gand",
+    "category_fr": "Magasin de bébé"
+  },
+  {
+    "name": "Dreambaby Groot Bijgaarden",
+    "address": "Brusselstraat 12, 1702 Dilbeek",
+    "postalCode": "1702",
+    "city": "Dilbeek",
+    "country": "België",
+    "website": "https://www.dreambaby.be/search?q=joie",
+    "category": "Babywinkel",
+    "lat": 50.8680146,
+    "lng": 4.2770022,
+    "place_id": "0x47c3c12310b37c0f:0xdc1324701924c388",
+    "name_fr": "Dreambaby Groot Bijgaarden",
+    "address_fr": "Brusselstraat 12, 1702 Dilbeek",
+    "city_fr": "Dilbeek",
     "category_fr": "Magasin de bébé"
   },
   {
@@ -333,22 +365,6 @@
     "name_fr": "Dreambaby Roulers",
     "address_fr": "Brugsesteenweg 353, 8800 Roulers, Belgique",
     "city_fr": "Roulers",
-    "category_fr": "Magasin de bébé"
-  },
-  {
-    "name": "Dreambaby Doornik",
-    "address": "Chaussée de Bruxelles 376, 7500 Doornik, België",
-    "postalCode": "7500",
-    "city": "Doornik",
-    "country": "België",
-    "website": "https://www.dreambaby.be/search?q=joie",
-    "category": "Babywinkel",
-    "lat": 50.6034406,
-    "lng": 3.4245977,
-    "place_id": "0x47c2e04c1a31f57b:0x331984cb044e5bd7",
-    "name_fr": "Dreambaby Tournai",
-    "address_fr": "Chaussée de Bruxelles 376, 7500 Tournai, Belgique",
-    "city_fr": "Tournai",
     "category_fr": "Magasin de bébé"
   },
   {
