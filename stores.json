@@ -7,8 +7,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 51.1418942,
-    "lng": 5.632484,
+    "lat": 51.138842,
+    "lng": 5.6035473,
     "place_id": "0x47c0d3dd34324f01:0x93fda464b62e1fe2"
   },
   {
@@ -19,8 +19,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 51.2338219,
-    "lng": 3.2127283,
+    "lat": 51.2223857,
+    "lng": 3.2108264,
     "place_id": "0x47c3572a63b8253b:0xc03878a4e0bb8154"
   },
   {
@@ -31,20 +31,20 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.8843903,
-    "lng": 4.0665468,
+    "lat": 50.8733518,
+    "lng": 4.0775873,
     "place_id": "0x47c3bc6eccedc535:0xea1b0a70ac6a75a3"
   },
   {
-    "name": "Dreambaby Dilbeek",
-    "address": "Ninoofsesteenweg 629, 1700 Dilbeek, België",
-    "postalCode": "1700",
+    "name": "Dreambaby Groot Bijgaarden",
+    "address": "Brusselstraat 12, 1702 Dilbeek",
+    "postalCode": "1702",
     "city": "Dilbeek",
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.855497,
-    "lng": 4.2458365,
+    "lat": 50.8680146,
+    "lng": 4.2770022,
     "place_id": "0x47c3c12310b37c0f:0xdc1324701924c388"
   },
   {
@@ -55,32 +55,32 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 51.0658568,
-    "lng": 3.7253367,
+    "lat": 51.0268751,
+    "lng": 3.726574,
     "place_id": "0x47c373fa0c11f1c5:0xe199f90958a60fe5"
   },
   {
     "name": "Dreambaby Halle",
-    "address": "Edingensesteenweg 196, 1500 Halle, België",
+    "address": "Edingensesteenweg 75, 1500 Halle, België",
     "postalCode": "1500",
     "city": "Halle",
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.7305379,
-    "lng": 4.2403173,
+    "lat": 50.7298387,
+    "lng": 4.2250076,
     "place_id": "0x47c3c852183c0855:0x2f85033260ad4eac"
   },
   {
     "name": "Dreambaby Herstal",
-    "address": "Rue des Naiveux 14, 4040 Herstal, België",
+    "address": "Rue Basse Campagne 155, 4040 Herstal, België",
     "postalCode": "4040",
     "city": "Herstal",
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.6790081,
-    "lng": 5.6244854,
+    "lat": 50.6898193,
+    "lng": 5.6426616,
     "place_id": "0x47c0f1b56174cc09:0xc8f568090f32934"
   },
   {
@@ -91,8 +91,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.448422,
-    "lng": 3.8894392,
+    "lat": 50.4458659,
+    "lng": 3.8741207,
     "place_id": "0x47c25b715e8ae571:0x9c0c6e11fbca222b"
   },
   {
@@ -103,8 +103,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.8597083,
-    "lng": 3.273329,
+    "lat": 50.8474139,
+    "lng": 3.2634178,
     "place_id": "0x47c33a549a935757:0x679a6a371ca5c447"
   },
   {
@@ -115,8 +115,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.4791337,
-    "lng": 4.1911631,
+    "lat": 50.4668264,
+    "lng": 4.2055544,
     "place_id": "0x47c2379df42e8f5d:0x7199b3e66c3b6409"
   },
   {
@@ -127,8 +127,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.967285,
-    "lng": 3.9447388,
+    "lat": 50.9795661,
+    "lng": 3.9702341,
     "place_id": "0x47c3a2a049dbcbbd:0xb1b8efc13fd0aae3"
   },
   {
@@ -139,8 +139,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.8778164,
-    "lng": 4.7016456,
+    "lat": 50.8889493,
+    "lng": 4.7030166,
     "place_id": "0x47c160cfa17a85cd:0x7c19ed06df398966"
   },
   {
@@ -151,8 +151,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 51.1192781,
-    "lng": 4.5616874,
+    "lat": 51.1462282,
+    "lng": 4.5394347,
     "place_id": "0x47c3fb905078b52d:0x5b4945eb74d274c4"
   },
   {
@@ -163,8 +163,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 51.0998499,
-    "lng": 3.8461265,
+    "lat": 51.0929871,
+    "lng": 3.8131371,
     "place_id": "0x47c377bf2e513117:0x9ced78a57dffab70"
   },
   {
@@ -187,8 +187,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 51.2491564,
-    "lng": 4.4442091,
+    "lat": 51.2525405,
+    "lng": 4.4561097,
     "place_id": "0x47c3f7e571064c3d:0x17102b66dbe996d7"
   },
   {
@@ -199,8 +199,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.6551081,
-    "lng": 3.8525151,
+    "lat": 50.6411398,
+    "lng": 3.8208168,
     "place_id": "0x47c3aae14c1ad2c9:0x5d74e76582e3985f"
   },
   {
@@ -211,8 +211,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 51.2377662,
-    "lng": 5.1962273,
+    "lat": 51.1806203,
+    "lng": 5.1204366,
     "place_id": "0x47c135b2d953a751:0x4faed3d2aa3dbe78"
   },
   {
@@ -223,8 +223,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.4270746,
-    "lng": 4.900257,
+    "lat": 50.4646869,
+    "lng": 4.8943198,
     "place_id": "0x47c198e2ee0cbfaf:0xfa4448633c3d9427"
   },
   {
@@ -235,8 +235,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 51.2152889,
-    "lng": 2.9335801,
+    "lat": 51.208181,
+    "lng": 2.9013777,
     "place_id": "0x47dcaf22d006b82d:0x7f31b34e735fb50"
   },
   {
@@ -247,8 +247,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.9368345,
-    "lng": 3.1335642,
+    "lat": 50.95741,
+    "lng": 3.1295227,
     "place_id": "0x47c335e31abda5bb:0xd30d4a6bf2801c6b"
   },
   {
@@ -259,8 +259,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.5893059,
-    "lng": 3.3720719,
+    "lat": 50.6034406,
+    "lng": 3.4245977,
     "place_id": "0x47c2e04c1a31f57b:0x331984cb044e5bd7"
   },
   {
@@ -271,8 +271,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 51.3233812,
-    "lng": 4.948461,
+    "lat": 51.3124071,
+    "lng": 4.9215742,
     "place_id": "0x47c6b23bf84d3fcf:0x428b2d0cea834149"
   },
   {
@@ -283,8 +283,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.7032864,
-    "lng": 4.4084276,
+    "lat": 50.7061401,
+    "lng": 4.3996945,
     "place_id": "0x47c3d1c48899bb69:0xf08e35a3f378debf"
   },
   {
@@ -295,8 +295,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 51.1642899,
-    "lng": 4.3879102,
+    "lat": 51.1645114,
+    "lng": 4.381826,
     "place_id": "0x47c3f137a1aa7011:0x87daa7908046be97"
   },
   {
@@ -307,8 +307,8 @@
     "country": "België",
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
-    "lat": 50.8850775,
-    "lng": 4.4862048,
+    "lat": 50.864323,
+    "lng": 4.4305377,
     "place_id": "0x47c3dd5166f647af:0xc458ef30945a84b2"
   }
 ]
