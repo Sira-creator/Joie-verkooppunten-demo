@@ -44,7 +44,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.855497,
-    "lng": 4.2458365
+    "lng": 4.2458365,
+    "place_id": "0x47c3c12310b37c0f:0xdc1324701924c388"
   },
   {
     "name": "Dreambaby Gent",
@@ -55,7 +56,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.0658568,
-    "lng": 3.7253367
+    "lng": 3.7253367,
+    "place_id": "0x47c373fa0c11f1c5:0xe199f90958a60fe5"
   },
   {
     "name": "Dreambaby Halle",
@@ -66,7 +68,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.7305379,
-    "lng": 4.2403173
+    "lng": 4.2403173,
+    "place_id": "0x47c3c852183c0855:0x2f85033260ad4eac"
   },
   {
     "name": "Dreambaby Herstal",
@@ -77,7 +80,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.6790081,
-    "lng": 5.6244854
+    "lng": 5.6244854,
+    "place_id": "0x47c0f1b56174cc09:0xc8f568090f32934"
   },
   {
     "name": "Dreambaby Jemappes",
@@ -88,7 +92,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.448422,
-    "lng": 3.8894392
+    "lng": 3.8894392,
+    "place_id": "0x47c25b715e8ae571:0x9c0c6e11fbca222b"
   },
   {
     "name": "Dreambaby Kuurne",
@@ -99,7 +104,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.8597083,
-    "lng": 3.273329
+    "lng": 3.273329,
+    "place_id": "0x47c33a549a935757:0x679a6a371ca5c447"
   },
   {
     "name": "Dreambaby La Louvière",
@@ -110,7 +116,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.4791337,
-    "lng": 4.1911631
+    "lng": 4.1911631,
+    "place_id": "0x47c2379df42e8f5d:0x7199b3e66c3b6409"
   },
   {
     "name": "Dreambaby Lede",
@@ -121,7 +128,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.967285,
-    "lng": 3.9447388
+    "lng": 3.9447388,
+    "place_id": "0x47c3a2a049dbcbbd:0xb1b8efc13fd0aae3"
   },
   {
     "name": "Dreambaby Leuven",
@@ -132,7 +140,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.8778164,
-    "lng": 4.7016456
+    "lng": 4.7016456,
+    "place_id": "0x47c160cfa17a85cd:0x7c19ed06df398966"
   },
   {
     "name": "Dreambaby Lier",
@@ -143,7 +152,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.1192781,
-    "lng": 4.5616874
+    "lng": 4.5616874,
+    "place_id": "0x47c3fb905078b52d:0x5b4945eb74d274c4"
   },
   {
     "name": "Dreambaby Lochristi",
@@ -154,7 +164,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.0998499,
-    "lng": 3.8461265
+    "lng": 3.8461265,
+    "place_id": "0x47c377bf2e513117:0x9ced78a57dffab70"
   },
   {
     "name": "Dreambaby Mechelen",
@@ -165,7 +176,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.0347769,
-    "lng": 4.4690219
+    "lng": 4.4690219,
+    "place_id": "0x47c3e5bbd44f43cb:0x8f818cc4dabd4ebf"
   },
   {
     "name": "Dreambaby Merksem",
@@ -176,7 +188,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.2491564,
-    "lng": 4.4442091
+    "lng": 4.4442091,
+    "place_id": "0x47c3f7e571064c3d:0x17102b66dbe996d7"
   },
   {
     "name": "Dreambaby Meslin-l'Évêque",
@@ -187,7 +200,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.6551081,
-    "lng": 3.8525151
+    "lng": 3.8525151,
+    "place_id": "0x47c3aae14c1ad2c9:0x5d74e76582e3985f"
   },
   {
     "name": "Dreambaby Mol",
@@ -198,7 +212,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.2377662,
-    "lng": 5.1962273
+    "lng": 5.1962273,
+    "place_id": "0x47c135b2d953a751:0x4faed3d2aa3dbe78"
   },
   {
     "name": "Dreambaby Namen",
@@ -209,7 +224,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.4270746,
-    "lng": 4.900257
+    "lng": 4.900257,
+    "place_id": "0x47c198e2ee0cbfaf:0xfa4448633c3d9427"
   },
   {
     "name": "Dreambaby Oostende",
@@ -220,7 +236,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.2152889,
-    "lng": 2.9335801
+    "lng": 2.9335801,
+    "place_id": "0x47dcaf22d006b82d:0x7f31b34e735fb50"
   },
   {
     "name": "Dreambaby Roeselare",
@@ -231,7 +248,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.9368345,
-    "lng": 3.1335642
+    "lng": 3.1335642,
+    "place_id": "0x47c335e31abda5bb:0xd30d4a6bf2801c6b"
   },
   {
     "name": "Dreambaby Doornik",
@@ -242,7 +260,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.5893059,
-    "lng": 3.3720719
+    "lng": 3.3720719,
+    "place_id": "0x47c2e04c1a31f57b:0x331984cb044e5bd7"
   },
   {
     "name": "Dreambaby Turnhout",
@@ -253,7 +272,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.3233812,
-    "lng": 4.948461
+    "lng": 4.948461,
+    "place_id": "0x47c6b23bf84d3fcf:0x428b2d0cea834149"
   },
   {
     "name": "Dreambaby Waterloo",
@@ -264,7 +284,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.7032864,
-    "lng": 4.4084276
+    "lng": 4.4084276,
+    "place_id": "0x47c3d1c48899bb69:0xf08e35a3f378debf"
   },
   {
     "name": "Dreambaby Wilrijk",
@@ -275,7 +296,8 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 51.1642899,
-    "lng": 4.3879102
+    "lng": 4.3879102,
+    "place_id": "0x47c3f137a1aa7011:0x87daa7908046be97"
   },
   {
     "name": "Dreambaby Zaventem",
@@ -286,6 +308,7 @@
     "website": "https://www.dreambaby.be",
     "category": "Babywinkel",
     "lat": 50.8850775,
-    "lng": 4.4862048
+    "lng": 4.4862048,
+    "place_id": "0x47c3dd5166f647af:0xc458ef30945a84b2"
   }
 ]
