@@ -311,83 +311,85 @@
             border-radius: 8px;
             border: 1px solid #E8E8E8;
         }
-/* Footer */
-.site-footer {
-    border-top: 1px solid #E8E8E8;
-    background-color: #F8F8F8;
-    margin-top: 30px;
-    padding: 28px 20px;
-    color: #666666;
-    font-size: 13px;
-}
 
-.footer-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
+        /* Footer */
+        .site-footer {
+            border-top: 1px solid #E8E8E8;
+            background-color: #F8F8F8;
+            margin-top: 30px;
+            padding: 28px 20px;
+            color: #666666;
+            font-size: 13px;
+        }
 
-.footer-card {
-    background-color: #FFFFFF;
-    border: 1px solid #E8E8E8;
-    border-radius: 10px;
-    padding: 20px;
-}
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-.footer-official {
-    color: #434446;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
+        .footer-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E8E8E8;
+            border-radius: 10px;
+            padding: 20px;
+        }
 
-.footer-disclaimer {
-    color: #666666;
-    margin-bottom: 18px;
-}
+        .footer-official {
+            color: #434446;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
 
-.footer-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 16px;
-}
+        .footer-disclaimer {
+            color: #666666;
+            margin-bottom: 18px;
+        }
 
-.footer-line {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 10px;
-    align-items: center;
-}
+        .footer-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
 
-.footer-line span,
-.footer-line a {
-    color: #666666;
-}
+        .footer-line {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+            align-items: center;
+        }
 
-.footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 10px;
-    padding-top: 14px;
-    border-top: 1px solid #E8E8E8;
-    margin-bottom: 14px;
-}
+        .footer-line span,
+        .footer-line a {
+            color: #666666;
+        }
 
-.footer-links a {
-    color: #434446;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    font-weight: 600;
-}
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+            padding-top: 14px;
+            border-top: 1px solid #E8E8E8;
+            margin-bottom: 14px;
+        }
 
-.footer-links a:hover {
-    color: #F2A900;
-}
+        .footer-links a {
+            color: #434446;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 600;
+        }
 
-.footer-small {
-    color: #888888;
-    font-size: 12px;
-    margin-bottom: 0;
-}
+        .footer-links a:hover {
+            color: #F2A900;
+        }
+
+        .footer-small {
+            color: #888888;
+            font-size: 12px;
+            margin-bottom: 0;
+        }
+
         @media (max-width: 600px) {
             .top-header {
                 padding: 10px 15px;
@@ -446,24 +448,25 @@
                 text-align: center;
                 flex: 1;
             }
+
             .site-footer {
-    padding: 24px 15px;
-}
+                padding: 24px 15px;
+            }
 
-.footer-card {
-    padding: 16px;
-}
+            .footer-card {
+                padding: 16px;
+            }
 
-.footer-line,
-.footer-links {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-}
+            .footer-line,
+            .footer-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
 
-.footer-separator {
-    display: none;
-}
+            .footer-separator {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -501,48 +504,50 @@
             <div class="loading" data-i18n="loading">Winkels laden...</div>
         </div>
     </div>
-<footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-card">
-            <p class="footer-official" data-i18n="footerOfficial">
-                Deze pagina wordt beheerd door Bomedys, officiële verdeler van Joie voor België en Luxemburg.
-            </p>
 
-            <p class="footer-disclaimer" data-i18n="footerDisclaimer">
-                Assortiment, voorraad, prijzen en openingsuren kunnen verschillen per winkel. Contacteer de winkel voor actuele informatie.
-            </p>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-card">
+                <p class="footer-official" data-i18n="footerOfficial">
+                    Deze pagina wordt beheerd door Bomedys, officiële verdeler van Joie voor België en Luxemburg.
+                </p>
 
-            <div class="footer-meta">
-                <div class="footer-line">
-                    <span><strong>Bomedys</strong></span>
-                    <span class="footer-separator">·</span>
-                    <span>[Straat + nummer, postcode gemeente, België]</span>
+                <p class="footer-disclaimer" data-i18n="footerDisclaimer">
+                    Assortiment, voorraad, prijzen en openingsuren kunnen verschillen per winkel. Contacteer de winkel voor actuele informatie.
+                </p>
+
+                <div class="footer-meta">
+                    <div class="footer-line">
+                        <span><strong>Bomedys</strong></span>
+                        <span class="footer-separator">·</span>
+                        <span>[Straat + nummer, postcode gemeente, België]</span>
+                    </div>
+
+                    <div class="footer-line">
+                        <span>Ondernemingsnummer: [BE 0XXX.XXX.XXX]</span>
+                        <span class="footer-separator">·</span>
+                        <a href="mailto:info@bomedys.be">info@bomedys.be</a>
+                    </div>
                 </div>
 
-                <div class="footer-line">
-                    <span>Ondernemingsnummer: [BE 0XXX.XXX.XXX]</span>
+                <div class="footer-links">
+                    <a href="./privacy.html" data-i18n="privacyLink">Privacybeleid</a>
                     <span class="footer-separator">·</span>
-                    <a href="mailto:info@bomedys.be">info@bomedys.be</a>
+                    <a href="./privacy.html#cookies" data-i18n="cookieLink">Cookiebeleid</a>
+                    <span class="footer-separator">·</span>
+                    <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" data-i18n="osmAttribution">
+                        Locatiegegevens: OpenStreetMap
+                    </a>
                 </div>
-            </div>
 
-            <div class="footer-links">
-                <a href="./privacy.html" data-i18n="privacyLink">Privacybeleid</a>
-                <span class="footer-separator">·</span>
-                <a href="./privacy.html#cookies" data-i18n="cookieLink">Cookiebeleid</a>
-                <span class="footer-separator">·</span>
-                <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" data-i18n="osmAttribution">
-                    Locatiegegevens: OpenStreetMap
-                </a>
+                <p class="footer-small">
+                    <span data-i18n="lastUpdateLabel">Laatste update verkooppunten:</span>
+                    <span>[mei 2026]</span>
+                </p>
             </div>
-
-            <p class="footer-small">
-                <span data-i18n="lastUpdateLabel">Laatste update verkooppunten:</span>
-                <span>[mei 2026]</span>
-            </p>
         </div>
-    </div>
-</footer>
+    </footer>
+
     <script>
         // stores.json staat in dezelfde map als index.html
         const STORES_JSON_URL = './stores.json';
@@ -578,38 +583,37 @@
                 cookieLink: 'Cookiebeleid',
                 osmAttribution: 'Locatiegegevens: OpenStreetMap',
                 lastUpdateLabel: 'Laatste update verkooppunten:'
-                
             },
-fr: {
-    title: 'Trouvez Joie près de vous',
-    subtitle: 'Points de vente en Belgique et au Luxembourg',
-    searchPlaceholder: 'Code postal ou ville (ex. 1000 Bruxelles)',
-    resetBtn: 'Reset',
-    searchBtn: 'Rechercher',
-    locationBtn: '📍 Ma position',
-    loading: 'Chargement des magasins...',
-    noResults: 'Aucun magasin trouvé',
-    openMaps: '📍 Ouvrir Maps',
-    webshop: 'Boutique',
-    gettingLocation: '⏳ Localisation...',
-    locationSuccess: '✓ Trié par distance',
-    locationError: 'Autorisez la localisation dans votre navigateur.',
-    locationUnavailable: 'Localisation indisponible.',
-    locationTimeout: 'Délai dépassé.',
-    searchingLocation: 'Recherche...',
-    searchSuccess: '✓ Trié par distance',
-    searchError: 'Lieu introuvable.',
-    searchFailed: 'Erreur. Réessayez.',
-    enterAddress: 'Entrez un lieu',
-    geoNotSupported: 'Géolocalisation non supportée',
-    loadError: 'Impossible de charger les magasins.',
-    footerOfficial: 'Cette page est gérée par Bomedys, distributeur officiel de Joie pour la Belgique et le Luxembourg.',
-    footerDisclaimer: 'L’assortiment, le stock, les prix et les heures d’ouverture peuvent varier selon le magasin. Contactez le magasin pour obtenir les informations les plus récentes.',
-    privacyLink: 'Politique de confidentialité',
-    cookieLink: 'Politique relative aux cookies',
-    osmAttribution: 'Données de localisation : OpenStreetMap',
-    lastUpdateLabel: 'Dernière mise à jour des points de vente :'
-}
+            fr: {
+                title: 'Trouvez Joie près de vous',
+                subtitle: 'Points de vente en Belgique et au Luxembourg',
+                searchPlaceholder: 'Code postal ou ville (ex. 1000 Bruxelles)',
+                resetBtn: 'Reset',
+                searchBtn: 'Rechercher',
+                locationBtn: '📍 Ma position',
+                loading: 'Chargement des magasins...',
+                noResults: 'Aucun magasin trouvé',
+                openMaps: '📍 Ouvrir Maps',
+                webshop: 'Boutique',
+                gettingLocation: '⏳ Localisation...',
+                locationSuccess: '✓ Trié par distance',
+                locationError: 'Autorisez la localisation dans votre navigateur.',
+                locationUnavailable: 'Localisation indisponible.',
+                locationTimeout: 'Délai dépassé.',
+                searchingLocation: 'Recherche...',
+                searchSuccess: '✓ Trié par distance',
+                searchError: 'Lieu introuvable.',
+                searchFailed: 'Erreur. Réessayez.',
+                enterAddress: 'Entrez un lieu',
+                geoNotSupported: 'Géolocalisation non supportée',
+                loadError: 'Impossible de charger les magasins.',
+                footerOfficial: 'Cette page est gérée par Bomedys, distributeur officiel de Joie pour la Belgique et le Luxembourg.',
+                footerDisclaimer: 'L’assortiment, le stock, les prix et les heures d’ouverture peuvent varier selon le magasin. Contactez le magasin pour obtenir les informations les plus récentes.',
+                privacyLink: 'Politique de confidentialité',
+                cookieLink: 'Politique relative aux cookies',
+                osmAttribution: 'Données de localisation : OpenStreetMap',
+                lastUpdateLabel: 'Dernière mise à jour des points de vente :'
+            }
         };
 
         let currentLang = 'nl';
@@ -752,20 +756,20 @@ fr: {
                 return;
             }
 
-storeList.innerHTML = storesToRender
-    .filter(store => 
-        typeof store.lat === 'number' &&
-        typeof store.lng === 'number' &&
-        !isNaN(store.lat) &&
-        !isNaN(store.lng)
-    )
-    .map(store => {
-        const distance = userLocation
-            ? calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng)
-            : null;
-        return renderStoreCard(store, distance);
-    })
-    .join('');
+            storeList.innerHTML = storesToRender
+                .filter(store => 
+                    typeof store.lat === 'number' &&
+                    typeof store.lng === 'number' &&
+                    !isNaN(store.lat) &&
+                    !isNaN(store.lng)
+                )
+                .map(store => {
+                    const distance = userLocation
+                        ? calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng)
+                        : null;
+                    return renderStoreCard(store, distance);
+                })
+                .join('');
         }
 
         // Gebruik huidige locatie
