@@ -314,12 +314,12 @@
 
         /* Footer */
         .site-footer {
-            border-top: 1px solid #E8E8E8;
             background-color: #F8F8F8;
-            margin-top: 30px;
-            padding: 28px 20px;
-            color: #666666;
+            margin-top: 32px;
+            padding: 22px 20px 24px 20px;
+            color: #888888;
             font-size: 12px;
+            line-height: 1.5;
         }
 
         .footer-content {
@@ -327,67 +327,47 @@
             margin: 0 auto;
         }
 
-        .footer-card {
-            background-color: #F8F8F8;
-            border: 1px solid #E8E8E8;
-            border-radius: 10px;
-            padding: 20px;
+        .footer-logo {
+            display: block;
+            height: 18px;
+            width: auto;
+            margin-bottom: 10px;
+            filter: grayscale(100%);
+            opacity: 0.45;
         }
 
         .footer-official {
-            color: #666666;
-            font-weight: 700;
-            margin-bottom: 8px;
+            color: #777777;
+            font-weight: 600;
+            margin-bottom: 3px;
         }
 
         .footer-disclaimer {
-            color: #666666;
-            margin-bottom: 18px;
-        }
-
-        .footer-meta {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-
-        .footer-line {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px 10px;
-            align-items: center;
-        }
-
-        .footer-line span,
-        .footer-line a {
-            color: #666666;
+            color: #888888;
+            margin-bottom: 10px;
         }
 
         .footer-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px 10px;
-            padding-top: 14px;
-            border-top: 1px solid #E8E8E8;
-            margin-bottom: 14px;
+            align-items: center;
+            gap: 5px 8px;
+            color: #AAAAAA;
         }
 
         .footer-links a {
-            color: #434446;
-            text-decoration: underline;
-            text-underline-offset: 2px;
-            font-weight: 600;
+            color: #777777;
+            text-decoration: none;
+            border-bottom: 1px solid #D0D0D0;
         }
 
         .footer-links a:hover {
             color: #F2A900;
+            border-bottom-color: #F2A900;
         }
 
-        .footer-small {
-            color: #888888;
-            font-size: 12px;
-            margin-bottom: 0;
+        .footer-separator {
+            color: #B8B8B8;
         }
 
         @media (max-width: 600px) {
@@ -450,22 +430,24 @@
             }
 
             .site-footer {
-                padding: 24px 15px;
+                margin-top: 26px;
+                padding: 18px 15px 20px 15px;
+                font-size: 11px;
             }
 
-            .footer-card {
-                padding: 16px;
+            .footer-logo {
+                height: 16px;
+                margin-bottom: 8px;
             }
 
-            .footer-line,
+            .footer-official,
+            .footer-disclaimer,
             .footer-links {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 4px;
+                font-size: 11px;
             }
 
-            .footer-separator {
-                display: none;
+            .footer-links {
+                gap: 4px 7px;
             }
         }
     </style>
@@ -507,44 +489,25 @@
 
     <footer class="site-footer">
         <div class="footer-content">
-            <div class="footer-card">
-                <p class="footer-official" data-i18n="footerOfficial">
-                    Deze pagina wordt beheerd door Bomedys, officiële verdeler van Joie voor België en Luxemburg.
-                </p>
+            <img class="footer-logo" src="Joie-Logo.png" alt="Joie">
 
-                <p class="footer-disclaimer" data-i18n="footerDisclaimer">
-                    Assortiment, voorraad, prijzen en openingsuren kunnen verschillen per winkel. Contacteer de winkel voor actuele informatie.
-                </p>
+            <p class="footer-official" data-i18n="footerOfficial">
+                Deze pagina wordt beheerd door Bomedys, officiële distributeur van Joie.
+            </p>
 
-                <div class="footer-meta">
-                    <div class="footer-line">
-                        <span><strong>Bomedys</strong></span>
-                        <span class="footer-separator">·</span>
-                        <span>[Straat + nummer, postcode gemeente, België]</span>
-                    </div>
+            <p class="footer-disclaimer" data-i18n="footerDisclaimer">
+                Assortiment, voorraad en prijzen kunnen verschillen per winkel.
+            </p>
 
-                    <div class="footer-line">
-                        <span>Ondernemingsnummer: [BE 0XXX.XXX.XXX]</span>
-                        <span class="footer-separator">·</span>
-                        <a href="mailto:info@bomedys.be">info@bomedys.be</a>
-                    </div>
-                </div>
-
-                <div class="footer-links">
-                    <a href="./privacy.html" data-i18n="privacyLink">Privacybeleid</a>
-                    <span class="footer-separator">·</span>
-                    <a href="./privacy.html#cookies" data-i18n="cookieLink">Cookiebeleid</a>
-                    <span class="footer-separator">·</span>
-                    <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" data-i18n="osmAttribution">
-                        Locatiegegevens: OpenStreetMap
-                    </a>
-                </div>
-
-                <p class="footer-small">
-                    <span data-i18n="lastUpdateLabel">Laatste update verkooppunten:</span>
-                    <span>[mei 2026]</span>
-                </p>
-            </div>
+            <nav class="footer-links" aria-label="Footer links">
+                <a href="./privacy.html#info" data-i18n="infoLink">Info</a>
+                <span class="footer-separator">·</span>
+                <a href="./privacy.html" data-i18n="privacyLink">Privacybeleid</a>
+                <span class="footer-separator">·</span>
+                <a href="./privacy.html#cookies" data-i18n="cookieLink">Cookiebeleid</a>
+                <span class="footer-separator">·</span>
+                <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" data-i18n="osmAttribution">OpenStreetMap</a>
+            </nav>
         </div>
     </footer>
 
@@ -577,12 +540,12 @@
                 enterAddress: 'Voer een adres of postcode in',
                 geoNotSupported: 'Geolocatie wordt niet ondersteund door je browser',
                 loadError: 'Kon winkels niet laden. Controleer de STORES_JSON_URL in de code.',
-                footerOfficial: 'Deze pagina wordt beheerd door Bomedys, officiële verdeler van Joie voor België en Luxemburg.',
-                footerDisclaimer: 'Assortiment, voorraad, prijzen en openingsuren kunnen verschillen per winkel. Contacteer de winkel voor actuele informatie.',
+                footerOfficial: 'Deze pagina wordt beheerd door Bomedys, officiële distributeur van Joie.',
+                footerDisclaimer: 'Assortiment, voorraad en prijzen kunnen verschillen per winkel.',
+                infoLink: 'Info',
                 privacyLink: 'Privacybeleid',
                 cookieLink: 'Cookiebeleid',
-                osmAttribution: 'Locatiegegevens: OpenStreetMap',
-                lastUpdateLabel: 'Laatste update verkooppunten:'
+                osmAttribution: 'OpenStreetMap'
             },
             fr: {
                 title: 'Trouvez Joie près de vous',
@@ -607,12 +570,12 @@
                 enterAddress: 'Entrez un lieu',
                 geoNotSupported: 'Géolocalisation non supportée',
                 loadError: 'Impossible de charger les magasins.',
-                footerOfficial: 'Cette page est gérée par Bomedys, distributeur officiel de Joie pour la Belgique et le Luxembourg.',
-                footerDisclaimer: 'L’assortiment, le stock, les prix et les heures d’ouverture peuvent varier selon le magasin. Contactez le magasin pour obtenir les informations les plus récentes.',
+                footerOfficial: 'Cette page est gérée par Bomedys, distributeur officiel de Joie.',
+                footerDisclaimer: 'L’assortiment, le stock et les prix peuvent varier selon le magasin.',
+                infoLink: 'Info',
                 privacyLink: 'Politique de confidentialité',
                 cookieLink: 'Politique relative aux cookies',
-                osmAttribution: 'Données de localisation : OpenStreetMap',
-                lastUpdateLabel: 'Dernière mise à jour des points de vente :'
+                osmAttribution: 'OpenStreetMap'
             }
         };
 
