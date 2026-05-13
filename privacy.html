@@ -1,411 +1,547 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy, cookies en info | Joie verkooppunten</title>
 
-  <title>Privacybeleid | Joie verkooppunten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+        html {
+            scroll-behavior: smooth;
+        }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: #F8F8F8;
+            color: #555555;
+            line-height: 1.55;
+            font-size: 13px;
+        }
 
-    body {
-      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      line-height: 1.6;
-      color: #434446;
-      background-color: #FFFFFF;
-    }
+        .page {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 28px 20px 42px 20px;
+        }
 
-    .top-header {
-      border-bottom: 1px solid #E8E8E8;
-      padding: 12px 20px;
-      background-color: #FFFFFF;
-    }
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
 
-    .header-content {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+        .logo {
+            height: 24px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.5;
+            display: block;
+        }
 
-    .logo-container {
-      height: 35px;
-    }
+        .back-link {
+            color: #777777;
+            text-decoration: none;
+            border-bottom: 1px solid #D0D0D0;
+            font-size: 12px;
+            white-space: nowrap;
+        }
 
-    .logo-container img {
-      height: 100%;
-      width: auto;
-    }
+        .back-link:hover {
+            color: #F2A900;
+            border-bottom-color: #F2A900;
+        }
 
-    .back-link {
-      color: #434446;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      font-size: 14px;
-      font-weight: 600;
-    }
+        h1 {
+            font-size: 18px;
+            line-height: 1.3;
+            font-weight: 600;
+            color: #555555;
+            margin-bottom: 6px;
+        }
 
-    .back-link:hover {
-      color: #F2A900;
-    }
+        .intro {
+            color: #777777;
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
 
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 30px 20px;
-    }
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px 8px;
+            margin-bottom: 28px;
+            color: #AAAAAA;
+            font-size: 12px;
+        }
 
-    h1 {
-      font-size: 30px;
-      margin-bottom: 8px;
-      color: #434446;
-    }
+        .quick-links a {
+            color: #777777;
+            text-decoration: none;
+            border-bottom: 1px solid #D0D0D0;
+        }
 
-    h2 {
-      font-size: 22px;
-      margin-top: 30px;
-      margin-bottom: 10px;
-      color: #434446;
-    }
+        .quick-links a:hover {
+            color: #F2A900;
+            border-bottom-color: #F2A900;
+        }
 
-    h3 {
-      font-size: 18px;
-      margin-top: 22px;
-      margin-bottom: 8px;
-      color: #434446;
-    }
+        section {
+            border-top: 1px solid #E6E6E6;
+            padding-top: 20px;
+            margin-top: 20px;
+            scroll-margin-top: 20px;
+        }
 
-    p {
-      margin-bottom: 12px;
-    }
+        h2 {
+            font-size: 14px;
+            line-height: 1.35;
+            font-weight: 600;
+            color: #555555;
+            margin-bottom: 10px;
+        }
 
-    ul {
-      margin-left: 22px;
-      margin-bottom: 16px;
-    }
+        h3 {
+            font-size: 13px;
+            line-height: 1.35;
+            font-weight: 600;
+            color: #666666;
+            margin-top: 16px;
+            margin-bottom: 6px;
+        }
 
-    li {
-      margin-bottom: 6px;
-    }
+        p {
+            margin-bottom: 10px;
+        }
 
-    a {
-      color: #434446;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
+        ul {
+            margin-left: 18px;
+            margin-bottom: 12px;
+        }
 
-    a:hover {
-      color: #F2A900;
-    }
+        li {
+            margin-bottom: 5px;
+        }
 
-    .notice {
-      background-color: #F8F8F8;
-      border: 1px solid #E8E8E8;
-      border-radius: 8px;
-      padding: 16px;
-      margin: 20px 0;
-    }
+        a {
+            color: #555555;
+            text-decoration: none;
+            border-bottom: 1px solid #D0D0D0;
+        }
 
-    .language-block {
-      border-top: 1px solid #E8E8E8;
-      margin-top: 36px;
-      padding-top: 30px;
-    }
+        a:hover {
+            color: #F2A900;
+            border-bottom-color: #F2A900;
+        }
 
-    .site-footer {
-      border-top: 1px solid #E8E8E8;
-      background-color: #F8F8F8;
-      padding: 24px 20px;
-      color: #666666;
-      font-size: 13px;
-    }
+        .muted {
+            color: #888888;
+        }
 
-    .footer-content {
-      max-width: 800px;
-      margin: 0 auto;
-    }
+        .company-details {
+            margin-top: 8px;
+            margin-bottom: 4px;
+        }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 24px 15px;
-      }
+        .language-label {
+            display: inline-block;
+            color: #999999;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 8px;
+        }
 
-      h1 {
-        font-size: 26px;
-      }
+        .fr-block {
+            margin-top: 34px;
+        }
 
-      h2 {
-        font-size: 20px;
-      }
-    }
-  </style>
+        .footer {
+            border-top: 1px solid #E6E6E6;
+            margin-top: 28px;
+            padding-top: 18px;
+            color: #999999;
+            font-size: 11px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 12px;
+            }
+
+            .page {
+                padding: 22px 16px 36px 16px;
+            }
+
+            .top {
+                margin-bottom: 24px;
+            }
+
+            .logo {
+                height: 21px;
+            }
+
+            .back-link {
+                font-size: 11px;
+            }
+
+            h1 {
+                font-size: 16px;
+            }
+
+            h2 {
+                font-size: 13px;
+            }
+
+            h3 {
+                font-size: 12px;
+            }
+
+            .intro,
+            .quick-links {
+                font-size: 11px;
+            }
+
+            section {
+                padding-top: 18px;
+                margin-top: 18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="top-header">
-    <div class="header-content">
-      <div class="logo-container">
-        <img src="Joie-Logo.png" alt="Joie Logo">
-      </div>
+    <main class="page">
+        <div class="top">
+            <img class="logo" src="Joie-Logo.png" alt="Joie">
+            <a class="back-link" href="./index.html">Terug naar verkooppunten</a>
+        </div>
 
-      <a class="back-link" href="./index.html">Terug naar verkooppunten</a>
-    </div>
-  </div>
-
-  <main class="container">
-    <h1>Privacybeleid</h1>
-
-    <p><strong>Laatst bijgewerkt:</strong> [mei 2026]</p>
-
-    <div class="notice">
-      <p>
-        Deze pagina toont Joie-verkooppunten in België en Luxemburg. De pagina wordt beheerd door Bomedys,
-        officiële verdeler van Joie voor België en Luxemburg.
-      </p>
-    </div>
-
-    <h2>1. Wie is verantwoordelijk?</h2>
-
-    <p>
-      De verwerkingsverantwoordelijke voor deze pagina is:
-    </p>
-
-    <p>
-      <strong>Bomedys</strong><br>
-      [Volledige vennootschapsnaam]<br>
-      [Straat + nummer]<br>
-      [Postcode + gemeente]<br>
-      België<br>
-      Ondernemingsnummer: [BE 0XXX.XXX.XXX]<br>
-      E-mail: <a href="mailto:[info@bomedys.be]">[info@bomedys.be]</a>
-    </p>
-
-    <h2>2. Welke gegevens verwerken we?</h2>
-
-    <p>
-      Wanneer u deze store locator gebruikt, kunnen de volgende gegevens worden verwerkt:
-    </p>
-
-    <ul>
-      <li>De stad, postcode of het adres dat u invult in de zoekbalk.</li>
-      <li>Uw browserlocatie, alleen wanneer u zelf op “Gebruik mijn huidige locatie” klikt en toestemming geeft via uw browser.</li>
-      <li>Technische gegevens die nodig zijn om de website te tonen, zoals IP-adres, browserinformatie en apparaatinformatie.</li>
-      <li>Wanneer u doorklikt naar Google Maps of naar een winkelwebsite, kunnen die externe websites eigen gegevens verwerken volgens hun eigen privacybeleid.</li>
-    </ul>
-
-    <h2>3. Waarvoor gebruiken we deze gegevens?</h2>
-
-    <p>
-      We gebruiken deze gegevens om:
-    </p>
-
-    <ul>
-      <li>Joie-verkooppunten in België en Luxemburg te tonen;</li>
-      <li>winkels te sorteren op afstand wanneer u een locatie of postcode gebruikt;</li>
-      <li>de website technisch correct te laten functioneren;</li>
-      <li>gebruikers snel naar een winkel, Google Maps of een webshop te sturen.</li>
-    </ul>
-
-    <h2>4. Wordt uw locatie bewaard?</h2>
-
-    <p>
-      De locatie die u via uw browser deelt, wordt gebruikt om de afstand tot verkooppunten te berekenen.
-      Bomedys bewaart deze locatie niet in een eigen database via deze pagina.
-    </p>
-
-    <p>
-      Wanneer u een adres, stad of postcode invoert, wordt deze zoekopdracht doorgestuurd naar een externe geocodingdienst
-      om de locatie te kunnen vinden.
-    </p>
-
-    <h2>5. Externe diensten</h2>
-
-    <p>
-      Deze pagina kan gebruikmaken van of doorverwijzen naar externe diensten:
-    </p>
-
-    <ul>
-      <li><strong>GitHub Pages</strong> voor hosting van de website.</li>
-      <li><strong>OpenStreetMap / Nominatim</strong> voor het zoeken van locaties op basis van een adres, stad of postcode.</li>
-      <li><strong>Google Maps</strong> wanneer u op “Open Maps” klikt.</li>
-      <li><strong>Websites van winkels</strong> wanneer u doorklikt naar een webshop of winkelwebsite.</li>
-      <li><strong>Google Fonts</strong> voor het laden van het lettertype op deze pagina.</li>
-    </ul>
-
-    <p>
-      Deze externe partijen kunnen eigen privacyvoorwaarden hanteren. Controleer hun privacybeleid voor meer informatie.
-    </p>
-
-    <h2 id="cookies">6. Cookies en tracking</h2>
-
-    <p>
-      Deze store locator gebruikt zelf geen marketingcookies of trackingcookies, tenzij dit later expliciet wordt toegevoegd.
-    </p>
-
-    <p>
-      Als Bomedys later Meta Pixel, Google Analytics of vergelijkbare trackingtechnologie toevoegt, zal dit beleid worden aangepast
-      en zal toestemming worden gevraagd waar dat wettelijk vereist is.
-    </p>
-
-    <h2>7. Hoe lang bewaren we gegevens?</h2>
-
-    <p>
-      Bomedys bewaart via deze store locator geen locatiezoekopdrachten in een eigen database.
-      Technische logs kunnen wel tijdelijk worden verwerkt door hosting- of externe diensten.
-    </p>
-
-    <h2>8. Uw rechten</h2>
-
-    <p>
-      U hebt onder de GDPR/AVG onder meer het recht op inzage, verbetering, verwijdering, beperking van verwerking,
-      bezwaar en overdraagbaarheid van uw persoonsgegevens, waar van toepassing.
-    </p>
-
-    <p>
-      Voor vragen over uw persoonsgegevens kunt u contact opnemen via:
-      <a href="mailto:[info@bomedys.be]">[info@bomedys.be]</a>.
-    </p>
-
-    <p>
-      U hebt ook het recht om een klacht in te dienen bij de Gegevensbeschermingsautoriteit.
-    </p>
-
-    <section class="language-block" lang="fr">
-      <h1>Politique de confidentialité</h1>
-
-      <p><strong>Dernière mise à jour :</strong> [mai 2026]</p>
-
-      <div class="notice">
-        <p>
-          Cette page présente les points de vente Joie en Belgique et au Luxembourg. Elle est gérée par Bomedys,
-          distributeur officiel de Joie pour la Belgique et le Luxembourg.
+        <h1>Privacy, cookies en info</h1>
+        <p class="intro">
+            Laatst bijgewerkt: [mei 2026]
         </p>
-      </div>
 
-      <h2>1. Qui est responsable ?</h2>
+        <nav class="quick-links" aria-label="Snelle links">
+            <a href="#info">Info</a>
+            <span>·</span>
+            <a href="#privacy">Privacybeleid</a>
+            <span>·</span>
+            <a href="#cookies">Cookiebeleid</a>
+            <span>·</span>
+            <a href="#fr">Français</a>
+        </nav>
 
-      <p>
-        Le responsable du traitement pour cette page est :
-      </p>
+        <section id="info">
+            <span class="language-label">NL</span>
+            <h2>Info</h2>
 
-      <p>
-        <strong>Bomedys</strong><br>
-        [Nom légal complet de la société]<br>
-        [Rue + numéro]<br>
-        [Code postal + commune]<br>
-        Belgique<br>
-        Numéro d’entreprise : [BE 0XXX.XXX.XXX]<br>
-        E-mail : <a href="mailto:[info@bomedys.be]">[info@bomedys.be]</a>
-      </p>
+            <p>
+                Deze pagina toont Joie-verkooppunten in België en Luxemburg. De pagina wordt beheerd door Bomedys,
+                officiële distributeur van Joie.
+            </p>
 
-      <h2>2. Quelles données traitons-nous ?</h2>
+            <div class="company-details">
+                <p>
+                    <strong>Bomedys</strong><br>
+                    [Volledige vennootschapsnaam]<br>
+                    [Straat + nummer]<br>
+                    [Postcode + gemeente]<br>
+                    België<br>
+                    Ondernemingsnummer / btw-nummer: [BE 0XXX.XXX.XXX]<br>
+                    E-mail: <a href="mailto:info@bomedys.be">info@bomedys.be</a><br>
+                    Telefoon: [telefoonnummer]
+                </p>
+            </div>
 
-      <p>
-        Lorsque vous utilisez ce localisateur de magasins, les données suivantes peuvent être traitées :
-      </p>
+            <p class="muted">
+                Assortiment, voorraad en prijzen kunnen verschillen per winkel. Contacteer de winkel voor actuele informatie.
+            </p>
+        </section>
 
-      <ul>
-        <li>La ville, le code postal ou l’adresse que vous saisissez dans la barre de recherche.</li>
-        <li>Votre position via le navigateur, uniquement si vous cliquez sur “Ma position” et donnez votre autorisation.</li>
-        <li>Les données techniques nécessaires à l’affichage du site, comme l’adresse IP, le navigateur et les informations relatives à l’appareil.</li>
-        <li>Lorsque vous cliquez vers Google Maps ou vers le site d’un magasin, ces sites externes peuvent traiter des données selon leur propre politique de confidentialité.</li>
-      </ul>
+        <section id="privacy">
+            <span class="language-label">NL</span>
+            <h2>Privacybeleid</h2>
 
-      <h2>3. Pourquoi utilisons-nous ces données ?</h2>
+            <h3>1. Verwerkingsverantwoordelijke</h3>
+            <p>
+                Voor deze pagina is Bomedys de verwerkingsverantwoordelijke. Voor vragen over privacy of persoonsgegevens
+                kunt u contact opnemen via <a href="mailto:info@bomedys.be">info@bomedys.be</a>.
+            </p>
 
-      <p>
-        Nous utilisons ces données pour :
-      </p>
+            <h3>2. Welke gegevens kunnen worden verwerkt?</h3>
+            <p>
+                Wanneer u deze store locator gebruikt, kunnen de volgende gegevens worden verwerkt:
+            </p>
 
-      <ul>
-        <li>afficher les points de vente Joie en Belgique et au Luxembourg ;</li>
-        <li>classer les magasins par distance lorsque vous utilisez une adresse, une ville, un code postal ou votre position ;</li>
-        <li>assurer le bon fonctionnement technique du site ;</li>
-        <li>permettre aux utilisateurs d’ouvrir rapidement un itinéraire, Google Maps ou le site d’un magasin.</li>
-      </ul>
+            <ul>
+                <li>De postcode, stad of het adres dat u invult in de zoekbalk.</li>
+                <li>Uw browserlocatie, alleen wanneer u zelf op “Gebruik mijn huidige locatie” klikt en toestemming geeft via uw browser.</li>
+                <li>Technische gegevens die nodig zijn om de website te tonen, zoals IP-adres, browserinformatie, apparaatinformatie en technische loggegevens.</li>
+                <li>Gegevens die externe websites verwerken wanneer u doorklikt naar Google Maps of naar de website van een winkel.</li>
+            </ul>
 
-      <h2>4. Votre position est-elle conservée ?</h2>
+            <h3>3. Waarvoor worden deze gegevens gebruikt?</h3>
+            <p>
+                De gegevens worden gebruikt om:
+            </p>
 
-      <p>
-        La position partagée via votre navigateur est utilisée pour calculer la distance avec les points de vente.
-        Bomedys ne conserve pas cette position dans une base de données propre via cette page.
-      </p>
+            <ul>
+                <li>Joie-verkooppunten in België en Luxemburg te tonen;</li>
+                <li>winkels te sorteren op afstand wanneer u een locatie, postcode, stad of adres gebruikt;</li>
+                <li>de website technisch correct en veilig te laten werken;</li>
+                <li>u door te verwijzen naar Google Maps of naar een winkelwebsite wanneer u daar zelf op klikt.</li>
+            </ul>
 
-      <p>
-        Lorsque vous saisissez une adresse, une ville ou un code postal, cette recherche est envoyée à un service externe
-        de géocodage afin de trouver l’emplacement correspondant.
-      </p>
+            <h3>4. Rechtsgrond</h3>
+            <p>
+                De verwerking gebeurt, afhankelijk van de situatie, op basis van:
+            </p>
 
-      <h2>5. Services externes</h2>
+            <ul>
+                <li>uw toestemming, wanneer u uw browserlocatie deelt;</li>
+                <li>het gerechtvaardigd belang van Bomedys om een correcte, veilige en gebruiksvriendelijke store locator aan te bieden;</li>
+                <li>de uitvoering van uw verzoek, wanneer u zelf een postcode, stad of adres invoert om verkooppunten te vinden;</li>
+                <li>wettelijke verplichtingen, wanneer die van toepassing zijn.</li>
+            </ul>
 
-      <p>
-        Cette page peut utiliser ou rediriger vers des services externes :
-      </p>
+            <h3>5. Wordt uw locatie bewaard?</h3>
+            <p>
+                De locatie die u via uw browser deelt, wordt gebruikt om winkels op afstand te sorteren.
+                Bomedys bewaart deze locatie niet in een eigen database via deze pagina.
+            </p>
 
-      <ul>
-        <li><strong>GitHub Pages</strong> pour l’hébergement du site.</li>
-        <li><strong>OpenStreetMap / Nominatim</strong> pour la recherche de lieux à partir d’une adresse, d’une ville ou d’un code postal.</li>
-        <li><strong>Google Maps</strong> lorsque vous cliquez sur “Ouvrir Maps”.</li>
-        <li><strong>Sites web des magasins</strong> lorsque vous cliquez vers une boutique en ligne ou un site de magasin.</li>
-        <li><strong>Google Fonts</strong> pour le chargement de la police utilisée sur cette page.</li>
-      </ul>
+            <p>
+                Wanneer u een postcode, stad of adres invoert, wordt deze zoekopdracht doorgestuurd naar een externe
+                geocodingdienst om de locatie te kunnen vinden.
+            </p>
 
-      <p>
-        Ces tiers peuvent appliquer leurs propres conditions de confidentialité. Veuillez consulter leur politique de confidentialité pour plus d’informations.
-      </p>
+            <h3>6. Externe diensten</h3>
+            <p>
+                Deze pagina kan gebruikmaken van of doorverwijzen naar externe diensten:
+            </p>
 
-      <h2>6. Cookies et tracking</h2>
+            <ul>
+                <li><strong>GitHub Pages</strong> voor hosting van de website.</li>
+                <li><strong>OpenStreetMap / Nominatim</strong> voor het zoeken van locaties op basis van een postcode, stad of adres.</li>
+                <li><strong>Google Maps</strong> wanneer u op “Open Maps” klikt.</li>
+                <li><strong>Websites van winkels</strong> wanneer u doorklikt naar een webshop of winkelwebsite.</li>
+                <li><strong>Google Fonts</strong> voor het laden van het lettertype op de store locator pagina.</li>
+            </ul>
 
-      <p>
-        Ce localisateur de magasins n’utilise pas lui-même de cookies marketing ou de cookies de suivi, sauf si ceux-ci sont ajoutés explicitement ultérieurement.
-      </p>
+            <p>
+                Deze externe partijen kunnen eigen privacyvoorwaarden hanteren. Raadpleeg hun privacybeleid voor meer informatie.
+            </p>
 
-      <p>
-        Si Bomedys ajoute ultérieurement Meta Pixel, Google Analytics ou une technologie similaire, cette politique sera adaptée
-        et le consentement sera demandé lorsque la loi l’exige.
-      </p>
+            <h3>7. Doorgifte buiten de Europese Economische Ruimte</h3>
+            <p>
+                Sommige externe dienstverleners kunnen persoonsgegevens verwerken buiten de Europese Economische Ruimte.
+                Waar vereist gebeurt dit op basis van passende waarborgen volgens de geldende privacywetgeving.
+            </p>
 
-      <h2>7. Durée de conservation</h2>
+            <h3>8. Bewaartermijn</h3>
+            <p>
+                Bomedys bewaart via deze store locator geen locatiezoekopdrachten in een eigen database.
+                Technische loggegevens kunnen tijdelijk worden verwerkt door hosting- of externe diensten volgens hun eigen beleid.
+            </p>
 
-      <p>
-        Bomedys ne conserve pas les recherches de localisation dans une base de données propre via ce localisateur.
-        Des journaux techniques peuvent toutefois être traités temporairement par les services d’hébergement ou par des services externes.
-      </p>
+            <h3>9. Uw rechten</h3>
+            <p>
+                U hebt, binnen de voorwaarden van de toepasselijke privacywetgeving, het recht op inzage, verbetering,
+                verwijdering, beperking van verwerking, bezwaar en overdraagbaarheid van uw persoonsgegevens.
+                Wanneer een verwerking op toestemming gebaseerd is, kunt u die toestemming intrekken.
+            </p>
 
-      <h2>8. Vos droits</h2>
+            <p>
+                U kunt uw vraag sturen naar <a href="mailto:info@bomedys.be">info@bomedys.be</a>.
+                U hebt ook het recht om een klacht in te dienen bij de
+                <a href="https://www.gegevensbeschermingsautoriteit.be/" target="_blank" rel="noopener">Gegevensbeschermingsautoriteit</a>.
+            </p>
 
-      <p>
-        Conformément au RGPD, vous disposez notamment d’un droit d’accès, de rectification, d’effacement, de limitation,
-        d’opposition et de portabilité de vos données personnelles, lorsque ces droits s’appliquent.
-      </p>
+            <h3>10. Wijzigingen</h3>
+            <p>
+                Bomedys kan dit privacybeleid aanpassen wanneer de website, de gebruikte diensten of de wettelijke verplichtingen wijzigen.
+            </p>
+        </section>
 
-      <p>
-        Pour toute question relative à vos données personnelles, vous pouvez nous contacter via :
-        <a href="mailto:[info@bomedys.be]">[info@bomedys.be]</a>.
-      </p>
+        <section id="cookies">
+            <span class="language-label">NL</span>
+            <h2>Cookiebeleid</h2>
 
-      <p>
-        Vous avez également le droit d’introduire une réclamation auprès de l’Autorité de protection des données.
-      </p>
-    </section>
-  </main>
+            <p>
+                Voor zover momenteel geïmplementeerd, plaatst deze store locator zelf geen marketingcookies of analytische cookies van Bomedys.
+            </p>
 
-  <footer class="site-footer">
-    <div class="footer-content">
-      <p>
-        Bomedys · [Straat + nummer, postcode gemeente, België] · Ondernemingsnummer: [BE 0XXX.XXX.XXX]
-      </p>
-    </div>
-  </footer>
+            <p>
+                De website kan wel technische gegevens verwerken die nodig zijn om de pagina correct te tonen en te beveiligen.
+                Externe diensten, zoals GitHub Pages, OpenStreetMap / Nominatim, Google Maps, Google Fonts of winkelwebsites,
+                kunnen eigen technologieën gebruiken volgens hun eigen beleid.
+            </p>
+
+            <p>
+                Als Bomedys later Meta Pixel, Google Analytics, TikTok Pixel of vergelijkbare trackingtechnologie toevoegt,
+                zal dit beleid worden aangepast en zal toestemming worden gevraagd waar dat wettelijk vereist is.
+            </p>
+        </section>
+
+        <section id="fr" class="fr-block" lang="fr">
+            <span class="language-label">FR</span>
+            <h2>Informations</h2>
+
+            <p>
+                Cette page présente les points de vente Joie en Belgique et au Luxembourg. Elle est gérée par Bomedys,
+                distributeur officiel de Joie.
+            </p>
+
+            <div class="company-details">
+                <p>
+                    <strong>Bomedys</strong><br>
+                    [Nom légal complet de la société]<br>
+                    [Rue + numéro]<br>
+                    [Code postal + commune]<br>
+                    Belgique<br>
+                    Numéro d’entreprise / numéro de TVA : [BE 0XXX.XXX.XXX]<br>
+                    E-mail : <a href="mailto:info@bomedys.be">info@bomedys.be</a><br>
+                    Téléphone : [numéro de téléphone]
+                </p>
+            </div>
+
+            <p class="muted">
+                L’assortiment, le stock et les prix peuvent varier selon le magasin. Contactez le magasin pour obtenir les informations les plus récentes.
+            </p>
+
+            <h2>Politique de confidentialité</h2>
+
+            <h3>1. Responsable du traitement</h3>
+            <p>
+                Pour cette page, Bomedys est le responsable du traitement. Pour toute question relative à la vie privée
+                ou aux données personnelles, vous pouvez nous contacter via <a href="mailto:info@bomedys.be">info@bomedys.be</a>.
+            </p>
+
+            <h3>2. Quelles données peuvent être traitées ?</h3>
+            <p>
+                Lorsque vous utilisez ce localisateur de magasins, les données suivantes peuvent être traitées :
+            </p>
+
+            <ul>
+                <li>Le code postal, la ville ou l’adresse que vous saisissez dans la barre de recherche.</li>
+                <li>Votre position via le navigateur, uniquement si vous cliquez sur “Ma position” et donnez votre autorisation via votre navigateur.</li>
+                <li>Les données techniques nécessaires à l’affichage du site, telles que l’adresse IP, le navigateur, l’appareil et les journaux techniques.</li>
+                <li>Les données traitées par des sites externes lorsque vous cliquez vers Google Maps ou vers le site d’un magasin.</li>
+            </ul>
+
+            <h3>3. Pourquoi ces données sont-elles utilisées ?</h3>
+            <p>
+                Ces données sont utilisées pour :
+            </p>
+
+            <ul>
+                <li>afficher les points de vente Joie en Belgique et au Luxembourg ;</li>
+                <li>classer les magasins par distance lorsque vous utilisez une position, un code postal, une ville ou une adresse ;</li>
+                <li>assurer le bon fonctionnement technique et la sécurité du site ;</li>
+                <li>vous rediriger vers Google Maps ou vers le site d’un magasin lorsque vous cliquez vous-même sur ces liens.</li>
+            </ul>
+
+            <h3>4. Base juridique</h3>
+            <p>
+                Le traitement est effectué, selon la situation, sur la base :
+            </p>
+
+            <ul>
+                <li>de votre consentement, lorsque vous partagez votre position via le navigateur ;</li>
+                <li>de l’intérêt légitime de Bomedys à proposer un localisateur de magasins correct, sûr et convivial ;</li>
+                <li>de l’exécution de votre demande, lorsque vous saisissez vous-même un code postal, une ville ou une adresse pour trouver des points de vente ;</li>
+                <li>d’obligations légales, lorsqu’elles s’appliquent.</li>
+            </ul>
+
+            <h3>5. Votre position est-elle conservée ?</h3>
+            <p>
+                La position partagée via votre navigateur est utilisée pour classer les magasins par distance.
+                Bomedys ne conserve pas cette position dans une base de données propre via cette page.
+            </p>
+
+            <p>
+                Lorsque vous saisissez un code postal, une ville ou une adresse, cette recherche est envoyée à un service externe
+                de géocodage afin de trouver l’emplacement correspondant.
+            </p>
+
+            <h3>6. Services externes</h3>
+            <p>
+                Cette page peut utiliser ou rediriger vers des services externes :
+            </p>
+
+            <ul>
+                <li><strong>GitHub Pages</strong> pour l’hébergement du site.</li>
+                <li><strong>OpenStreetMap / Nominatim</strong> pour la recherche de lieux à partir d’un code postal, d’une ville ou d’une adresse.</li>
+                <li><strong>Google Maps</strong> lorsque vous cliquez sur “Ouvrir Maps”.</li>
+                <li><strong>Sites web des magasins</strong> lorsque vous cliquez vers une boutique en ligne ou le site d’un magasin.</li>
+                <li><strong>Google Fonts</strong> pour le chargement de la police utilisée sur la page du localisateur.</li>
+            </ul>
+
+            <p>
+                Ces tiers peuvent appliquer leurs propres conditions de confidentialité. Veuillez consulter leur politique de confidentialité pour plus d’informations.
+            </p>
+
+            <h3>7. Transfert en dehors de l’Espace économique européen</h3>
+            <p>
+                Certains prestataires externes peuvent traiter des données personnelles en dehors de l’Espace économique européen.
+                Lorsque cela est requis, ce traitement est effectué sur la base de garanties appropriées conformément à la législation applicable.
+            </p>
+
+            <h3>8. Durée de conservation</h3>
+            <p>
+                Bomedys ne conserve pas les recherches de localisation dans une base de données propre via ce localisateur.
+                Des journaux techniques peuvent toutefois être traités temporairement par les services d’hébergement ou par des services externes selon leur propre politique.
+            </p>
+
+            <h3>9. Vos droits</h3>
+            <p>
+                Dans les conditions prévues par la législation applicable, vous disposez notamment d’un droit d’accès,
+                de rectification, d’effacement, de limitation du traitement, d’opposition et de portabilité de vos données personnelles.
+                Lorsqu’un traitement est fondé sur le consentement, vous pouvez retirer ce consentement.
+            </p>
+
+            <p>
+                Vous pouvez envoyer votre demande à <a href="mailto:info@bomedys.be">info@bomedys.be</a>.
+                Vous avez également le droit d’introduire une réclamation auprès de
+                <a href="https://www.autoriteprotectiondonnees.be/" target="_blank" rel="noopener">l’Autorité de protection des données</a>.
+            </p>
+
+            <h3>10. Modifications</h3>
+            <p>
+                Bomedys peut modifier cette politique de confidentialité lorsque le site, les services utilisés ou les obligations légales changent.
+            </p>
+
+            <h2>Politique relative aux cookies</h2>
+
+            <p>
+                Dans sa configuration actuelle, ce localisateur de magasins ne place pas lui-même de cookies marketing ou de cookies analytiques de Bomedys.
+            </p>
+
+            <p>
+                Le site peut toutefois traiter des données techniques nécessaires à l’affichage correct et à la sécurité de la page.
+                Des services externes, tels que GitHub Pages, OpenStreetMap / Nominatim, Google Maps, Google Fonts ou les sites web des magasins,
+                peuvent utiliser leurs propres technologies conformément à leur propre politique.
+            </p>
+
+            <p>
+                Si Bomedys ajoute ultérieurement Meta Pixel, Google Analytics, TikTok Pixel ou une technologie de suivi similaire,
+                cette politique sera adaptée et le consentement sera demandé lorsque la loi l’exige.
+            </p>
+        </section>
+
+        <footer class="footer">
+            <p>
+                Bomedys · Joie verkooppunten België en Luxemburg
+            </p>
+        </footer>
+    </main>
 </body>
 </html>
