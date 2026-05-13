@@ -325,6 +325,8 @@
         .footer-content {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
         .footer-logo {
@@ -332,8 +334,8 @@
             height: 18px;
             width: auto;
             margin-bottom: 10px;
-            filter: grayscale(100%);
-            opacity: 0.45;
+            filter: grayscale(100%) contrast(110%);
+            opacity: 0.62;
         }
 
         .footer-official {
@@ -435,9 +437,14 @@
                 font-size: 12px;
             }
 
+            .footer-content {
+                padding: 0;
+            }
+
             .footer-logo {
                 height: 16px;
                 margin-bottom: 8px;
+                opacity: 0.62;
             }
 
             .footer-official,
@@ -647,24 +654,23 @@
 
         // Bereken afstand tussen twee coördinaten (Haversine formule)
         function calculateDistance(lat1, lon1, lat2, lon2) {
-            const R = 6371; // Radius van de aarde in km
+            const R = 6371;
             const dLat = (lat2 - lat1) * Math.PI / 180;
             const dLon = (lon2 - lon1) * Math.PI / 180;
             const a = 
-                Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.sin(dLat / 2) * Math.sin(dLat / 2) +
                 Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                Math.sin(dLon/2) * Math.sin(dLon/2);
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
             return R * c;
         }
 
-        // Genereer Google Maps URL met Place ID (indien beschikbaar) of fallback naar naam+adres
+        // Genereer Google Maps URL met Place ID of fallback naar naam + adres
         function getGoogleMapsUrl(store) {
-            // Als de winkel een Place ID heeft, gebruik die voor perfecte mobiele ervaring
             if (store.place_id) {
                 return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(store.name)}&query_place_id=${store.place_id}`;
             }
-            // Fallback: gebruik naam + adres voor zoekfunctie
+
             const query = encodeURIComponent(store.name + ', ' + store.address);
             return `https://www.google.com/maps/search/?api=1&query=${query}`;
         }
@@ -685,7 +691,6 @@
         function renderStoreCard(store, distance = null) {
             const t = translations[currentLang];
             
-            // Gebruik vertaalde velden indien beschikbaar
             const storeName = currentLang === 'fr' && store.name_fr ? store.name_fr : store.name;
             const storeAddress = currentLang === 'fr' && store.address_fr ? store.address_fr : store.address;
             
@@ -701,8 +706,8 @@
                     </div>
                     <div class="store-address">${storeAddress}</div>
                     <div class="store-actions">
-                        <a href="${mapsUrl}" target="_blank" class="btn-maps">${t.openMaps}</a>
-                        <a href="${store.website}" target="_blank" class="btn-website">${t.webshop}</a>
+                        <a href="${mapsUrl}" target="_blank" rel="noopener" class="btn-maps">${t.openMaps}</a>
+                        <a href="${store.website}" target="_blank" rel="noopener" class="btn-website">${t.webshop}</a>
                     </div>
                 </div>
             `;
@@ -714,22 +719,24 @@
             const storeList = document.getElementById('storeList');
             const storesToRender = sortedStores || stores;
 
-            if (storesToRender.length === 0) {
+            const validStores = storesToRender.filter(store => 
+                typeof store.lat === 'number' &&
+                typeof store.lng === 'number' &&
+                !isNaN(store.lat) &&
+                !isNaN(store.lng)
+            );
+
+            if (validStores.length === 0) {
                 storeList.innerHTML = `<div class="no-results">${t.noResults}</div>`;
                 return;
             }
 
-            storeList.innerHTML = storesToRender
-                .filter(store => 
-                    typeof store.lat === 'number' &&
-                    typeof store.lng === 'number' &&
-                    !isNaN(store.lat) &&
-                    !isNaN(store.lng)
-                )
+            storeList.innerHTML = validStores
                 .map(store => {
                     const distance = userLocation
                         ? calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng)
                         : null;
+
                     return renderStoreCard(store, distance);
                 })
                 .join('');
@@ -756,11 +763,18 @@
                         lng: position.coords.longitude
                     };
 
-                    // Sorteer winkels op afstand
-                    const sortedStores = stores.map(store => ({
-                        ...store,
-                        distance: calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng)
-                    })).sort((a, b) => a.distance - b.distance);
+                    const sortedStores = stores
+                        .filter(store => 
+                            typeof store.lat === 'number' &&
+                            typeof store.lng === 'number' &&
+                            !isNaN(store.lat) &&
+                            !isNaN(store.lng)
+                        )
+                        .map(store => ({
+                            ...store,
+                            distance: calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng)
+                        }))
+                        .sort((a, b) => a.distance - b.distance);
 
                     renderStores(sortedStores);
                     showStatus(t.locationSuccess, 'success');
@@ -770,6 +784,7 @@
                 },
                 (error) => {
                     let errorMessage = '';
+
                     if (error.code === error.PERMISSION_DENIED) {
                         errorMessage = t.locationError;
                     } else if (error.code === error.POSITION_UNAVAILABLE) {
@@ -779,6 +794,7 @@
                     }
                     
                     showStatus(errorMessage, 'error');
+
                     btn.disabled = false;
                     btn.querySelector('[data-i18n="locationBtn"]').textContent = t.locationBtn;
                 }
@@ -815,11 +831,18 @@
                         lng: parseFloat(data[0].lon)
                     };
 
-                    // Sorteer winkels op afstand
-                    const sortedStores = stores.map(store => ({
-                        ...store,
-                        distance: calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng)
-                    })).sort((a, b) => a.distance - b.distance);
+                    const sortedStores = stores
+                        .filter(store => 
+                            typeof store.lat === 'number' &&
+                            typeof store.lng === 'number' &&
+                            !isNaN(store.lat) &&
+                            !isNaN(store.lng)
+                        )
+                        .map(store => ({
+                            ...store,
+                            distance: calculateDistance(userLocation.lat, userLocation.lng, store.lat, store.lng)
+                        }))
+                        .sort((a, b) => a.distance - b.distance);
 
                     renderStores(sortedStores);
                     showStatus(t.searchSuccess.replace('{query}', input), 'success');
@@ -840,16 +863,15 @@
             renderStores();
         }
 
-        // Enter key support voor zoeken
-        document.getElementById('locationInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchByAddress();
-            }
-        });
-
         // Initialiseer bij laden
         document.addEventListener('DOMContentLoaded', function() {
             loadStores();
+
+            document.getElementById('locationInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    searchByAddress();
+                }
+            });
         });
     </script>
 </body>
