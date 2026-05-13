@@ -7,80 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
-    /* Footer */
-.site-footer {
-  border-top: 1px solid #E8E8E8;
-  background-color: #F8F8F8;
-  margin-top: 30px;
-  padding: 24px 20px;
-  color: #666666;
-  font-size: 13px;
-}
 
-.footer-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.footer-official {
-  color: #434446;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.footer-disclaimer {
-  margin-bottom: 16px;
-}
-
-.footer-company {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  margin-bottom: 14px;
-}
-
-.footer-company span,
-.footer-company a {
-  color: #666666;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 10px;
-  margin-bottom: 12px;
-}
-
-.footer-links a {
-  color: #434446;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.footer-links a:hover {
-  color: #F2A900;
-}
-
-.footer-small {
-  color: #888888;
-  font-size: 12px;
-}
-
-@media (max-width: 600px) {
-  .site-footer {
-    padding: 22px 15px;
-  }
-
-  .footer-company,
-  .footer-links {
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .footer-separator {
-    display: none;
-  }
-}
     <style>
         * {
             margin: 0;
@@ -384,7 +311,83 @@
             border-radius: 8px;
             border: 1px solid #E8E8E8;
         }
+/* Footer */
+.site-footer {
+    border-top: 1px solid #E8E8E8;
+    background-color: #F8F8F8;
+    margin-top: 30px;
+    padding: 28px 20px;
+    color: #666666;
+    font-size: 13px;
+}
 
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.footer-official {
+    color: #434446;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.footer-disclaimer {
+    color: #666666;
+    margin-bottom: 18px;
+}
+
+.footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.footer-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    align-items: center;
+}
+
+.footer-line span,
+.footer-line a {
+    color: #666666;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    padding-top: 14px;
+    border-top: 1px solid #E8E8E8;
+    margin-bottom: 14px;
+}
+
+.footer-links a {
+    color: #434446;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 600;
+}
+
+.footer-links a:hover {
+    color: #F2A900;
+}
+
+.footer-small {
+    color: #888888;
+    font-size: 12px;
+    margin-bottom: 0;
+}
         @media (max-width: 600px) {
             .top-header {
                 padding: 10px 15px;
@@ -443,6 +446,24 @@
                 text-align: center;
                 flex: 1;
             }
+            .site-footer {
+    padding: 24px 15px;
+}
+
+.footer-card {
+    padding: 16px;
+}
+
+.footer-line,
+.footer-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.footer-separator {
+    display: none;
+}
         }
     </style>
 </head>
@@ -481,44 +502,50 @@
         </div>
     </div>
 <footer class="site-footer">
-  <div class="footer-content">
-    <p class="footer-official" data-i18n="footerOfficial">
-      Deze pagina wordt beheerd door Bomedys, officiële verdeler van Joie voor België en Luxemburg.
-    </p>
+    <div class="footer-content">
+        <div class="footer-card">
+            <p class="footer-official" data-i18n="footerOfficial">
+                Deze pagina wordt beheerd door Bomedys, officiële verdeler van Joie voor België en Luxemburg.
+            </p>
 
-    <p class="footer-disclaimer" data-i18n="footerDisclaimer">
-      Assortiment, voorraad, prijzen en openingsuren kunnen verschillen per winkel. Contacteer de winkel voor actuele informatie.
-    </p>
+            <p class="footer-disclaimer" data-i18n="footerDisclaimer">
+                Assortiment, voorraad, prijzen en openingsuren kunnen verschillen per winkel. Contacteer de winkel voor actuele informatie.
+            </p>
 
-    <div class="footer-company">
-      <span>Bomedys</span>
-      <span class="footer-separator">·</span>
-      <span>[Straat + nummer, postcode gemeente, België]</span>
-      <span class="footer-separator">·</span>
-      <span>Ondernemingsnummer: [BE 0XXX.XXX.XXX]</span>
-      <span class="footer-separator">·</span>
-      <a href="mailto:[info@bomedys.be]">[info@bomedys.be]</a>
+            <div class="footer-meta">
+                <div class="footer-line">
+                    <span><strong>Bomedys</strong></span>
+                    <span class="footer-separator">·</span>
+                    <span>[Straat + nummer, postcode gemeente, België]</span>
+                </div>
+
+                <div class="footer-line">
+                    <span>Ondernemingsnummer: [BE 0XXX.XXX.XXX]</span>
+                    <span class="footer-separator">·</span>
+                    <a href="mailto:info@bomedys.be">info@bomedys.be</a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <a href="./privacy.html" data-i18n="privacyLink">Privacybeleid</a>
+                <span class="footer-separator">·</span>
+                <a href="./privacy.html#cookies" data-i18n="cookieLink">Cookiebeleid</a>
+                <span class="footer-separator">·</span>
+                <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" data-i18n="osmAttribution">
+                    Locatiegegevens: OpenStreetMap
+                </a>
+            </div>
+
+            <p class="footer-small">
+                <span data-i18n="lastUpdateLabel">Laatste update verkooppunten:</span>
+                <span>[mei 2026]</span>
+            </p>
+        </div>
     </div>
-
-    <div class="footer-links">
-      <a href="./privacy.html" data-i18n="privacyLink">Privacybeleid</a>
-      <span class="footer-separator">·</span>
-      <a href="./privacy.html#cookies" data-i18n="cookieLink">Cookiebeleid</a>
-      <span class="footer-separator">·</span>
-      <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener" data-i18n="osmAttribution">
-        Locatiegegevens: OpenStreetMap
-      </a>
-    </div>
-
-    <p class="footer-small">
-      <span data-i18n="lastUpdateLabel">Laatste update verkooppunten:</span>
-      <span>[mei 2026]</span>
-    </p>
-  </div>
 </footer>
     <script>
-        // CONFIGURATIE: Pas deze URL aan naar jouw GitHub raw file URL
-        const STORES_JSON_URL = './stores.json'
+        // stores.json staat in dezelfde map als index.html
+        const STORES_JSON_URL = './stores.json';
         
         // Vertalingen
         const translations = {
