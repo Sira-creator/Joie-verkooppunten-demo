@@ -26,7 +26,9 @@
             padding: 0;
             line-height: 1.6;
             color: #434446;
-            font-size: 14px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .top-header {
@@ -50,7 +52,6 @@
         .logo-container img {
             height: 100%;
             width: auto;
-            display: block;
         }
 
         .language-switch {
@@ -85,8 +86,10 @@
 
         .page {
             max-width: 800px;
+            width: 100%;
             margin: 0 auto;
             padding: 28px 20px 20px 20px;
+            flex: 1 0 auto;
         }
 
         .back-link {
@@ -196,6 +199,7 @@
             color: #888888;
             font-size: 12px;
             line-height: 1.5;
+            flex-shrink: 0;
         }
 
         .footer-content {
@@ -326,7 +330,7 @@
     </div>
 
     <main class="page">
-        <a class="back-link" href="./index.html" data-i18n="back">Terug naar verkooppunten</a>
+        <a class="back-link" href="./index.html" data-i18n="back">← Terug naar verkooppunten</a>
 
         <div class="lang-content" data-lang="nl">
             <h1>Cookiebeleid</h1>
@@ -387,7 +391,7 @@
     <script>
         const translations = {
             nl: {
-                back: 'Terug naar verkooppunten',
+                back: '← Terug naar verkooppunten',
                 footerOfficial: 'Deze pagina wordt beheerd door Bomedys, officiële distributeur van Joie.',
                 footerDisclaimer: 'Assortiment, voorraad en prijzen kunnen verschillen per winkel.',
                 infoLink: 'Info',
@@ -396,7 +400,7 @@
                 osmAttribution: 'OpenStreetMap'
             },
             fr: {
-                back: 'Retour aux points de vente',
+                back: '← Retour aux points de vente',
                 footerOfficial: 'Cette page est gérée par Bomedys, distributeur officiel de Joie.',
                 footerDisclaimer: 'L’assortiment, le stock et les prix peuvent varier selon le magasin.',
                 infoLink: 'Info',
