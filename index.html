@@ -9,324 +9,150 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+
+        :root {
+            --joie-yellow: #F2A900;
+            --joie-yellow-dark: #D89500;
+            --joie-blue: #3777C4;
+            --text-main: #434446;
+            --text-muted: #666666;
+            --text-soft: #888888;
+            --line: #E8E8E8;
+            --surface: #FFFFFF;
+            --surface-soft: #F8F8F8;
+            --content-width: 800px;
+            --page-padding-x: 20px;
+            --header-logo-height: 35px;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #FFFFFF;
-            padding: 0;
-            line-height: 1.6;
-            color: #434446;
+        html {
+            scroll-behavior: smooth;
+            overflow-y: scroll;
+            scrollbar-gutter: stable;
         }
 
-        /* Header met logo en taalswitch */
+        body {
+            min-height: 100vh;
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--surface);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        a {
+            color: #555555;
+            text-decoration: none;
+            border-bottom: 1px solid #D0D0D0;
+            transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--joie-yellow);
+            border-bottom-color: var(--joie-yellow);
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
         .top-header {
-            border-bottom: 1px solid #E8E8E8;
-            padding: 12px 20px;
-            background-color: #FFFFFF;
+            width: 100%;
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--line);
+            padding: 12px var(--page-padding-x);
+            flex-shrink: 0;
         }
 
         .header-content {
-            max-width: 800px;
+            width: 100%;
+            max-width: var(--content-width);
+            min-height: var(--header-logo-height);
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 16px;
         }
 
         .logo-container {
-            height: 35px;
+            height: var(--header-logo-height);
+            display: inline-flex;
+            align-items: center;
+            flex: 0 1 auto;
+            line-height: 0;
+            border-bottom: 0;
+        }
+
+        .logo-container:hover {
+            border-bottom: 0;
         }
 
         .logo-container img {
+            display: block;
             height: 100%;
             width: auto;
+            max-width: min(170px, 48vw);
         }
 
         .language-switch {
             display: flex;
-            gap: 4px;
             align-items: center;
+            gap: 4px;
+            flex: 0 0 auto;
         }
 
         .lang-btn {
+            min-width: 42px;
             padding: 6px 12px;
-            border: 1px solid #E8E8E8;
+            border: 1px solid var(--line);
             border-radius: 4px;
-            background-color: #FFFFFF;
-            color: #666666;
+            background-color: var(--surface);
+            color: var(--text-muted);
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
+            line-height: 1.2;
             cursor: pointer;
-            transition: all 0.2s;
-            font-family: 'Nunito', sans-serif;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
         }
 
         .lang-btn:hover {
-            border-color: #F2A900;
-            color: #F2A900;
+            border-color: var(--joie-yellow);
+            color: var(--joie-yellow);
         }
 
         .lang-btn.active {
-            background-color: #F2A900;
+            background-color: var(--joie-yellow);
             color: #FFFFFF;
-            border-color: #F2A900;
+            border-color: var(--joie-yellow);
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 25px 20px 20px 20px;
-        }
-
-        h1 {
-            color: #434446;
-            margin-bottom: 2px;
-            font-size: 30px;
-            font-weight: 700;
-        }
-
-        .subtitle {
-            color: #434446;
-            margin-bottom: 16px;
-            font-size: 18px;
-            font-weight: 400;
-        }
-
-        .search-section {
-            background: #FFFFFF;
-            padding: 0;
-            margin-bottom: 25px;
-            border-bottom: 1px solid #E8E8E8;
-            padding-bottom: 25px;
-        }
-
-        .input-group {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-
-        input[type="text"] {
-            flex: 1;
-            padding: 12px 16px;
-            border: 1px solid #E8E8E8;
-            border-radius: 6px;
-            font-size: 15px;
-            transition: border-color 0.3s;
-            background-color: #F8F8F8;
-            font-family: 'Nunito', sans-serif;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #F2A900;
-            background-color: #FFFFFF;
-        }
-
-        input[type="text"]::placeholder {
-            color: #999999;
-        }
-
-        button {
-            padding: 12px 20px;
-            border: none;
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-family: 'Nunito', sans-serif;
-            white-space: nowrap;
-        }
-
-        .btn-primary {
-            background-color: #F2A900;
-            color: #FFFFFF;
-        }
-
-        .btn-primary:hover {
-            background-color: #D89500;
-        }
-
-        .btn-secondary {
-            background-color: #FFFFFF;
-            color: #666666;
-            border: 1px solid #CCCCCC;
-        }
-
-        .btn-secondary:hover {
-            background-color: #F8F8F8;
-            border-color: #999999;
-            color: #434446;
-        }
-
-        .btn-location {
-            background-color: #F2A900;
-            color: #FFFFFF;
-            width: 100%;
-            font-weight: 600;
-        }
-
-        .btn-location:hover {
-            background-color: #D89500;
-        }
-
-        .btn-location:disabled {
-            background-color: #E8E8E8;
-            color: #999999;
-            cursor: not-allowed;
-        }
-
-        .status-message {
-            padding: 12px 16px;
-            border-radius: 6px;
-            margin-top: 12px;
-            font-size: 14px;
-        }
-
-        .status-info {
-            background-color: #E6F2FA;
-            color: #3777C4;
-            border-left: 3px solid #3777C4;
-        }
-
-        .status-error {
-            background-color: #FFEBEE;
-            color: #C62828;
-            border-left: 3px solid #C62828;
-        }
-
-        .status-success {
-            background-color: #FFF9E6;
-            color: #D89500;
-            border-left: 3px solid #F2A900;
-        }
-
-        .store-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .store-card {
-            background: #FFFFFF;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #E8E8E8;
-            transition: all 0.2s;
-        }
-
-        .store-card:hover {
-            border-color: #F2A900;
-            box-shadow: 0 2px 8px rgba(242, 169, 0, 0.15);
-        }
-
-        .store-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 10px;
-        }
-
-        .store-name {
-            font-size: 18px;
-            font-weight: 700;
-            color: #434446;
-            margin-bottom: 0px;
-        }
-
-        .store-distance {
-            background-color: #3777C4;
-            color: #FFFFFF;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        .store-address {
-            color: #666666;
-            margin-bottom: 14px;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .store-actions {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .store-actions a {
-            text-decoration: none;
-            padding: 9px 16px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.2s;
-            border: 1px solid;
-        }
-
-        .btn-maps {
-            background-color: #FFFFFF;
-            color: #F2A900;
-            border-color: #F2A900;
-        }
-
-        .btn-maps:hover {
-            background-color: #F2A900;
-            color: #FFFFFF;
-        }
-
-        .btn-website {
-            background-color: #FFFFFF;
-            color: #666666;
-            border-color: #CCCCCC;
-        }
-
-        .btn-website:hover {
-            background-color: #F8F8F8;
-            border-color: #999999;
-            color: #434446;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #999999;
-            font-size: 15px;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: #999999;
-            background: #F8F8F8;
-            border-radius: 8px;
-            border: 1px solid #E8E8E8;
-        }
-
-        /* Footer */
         .site-footer {
-            background-color: #F8F8F8;
             margin-top: 60px;
-            padding: 40px 20px 40px 20px;
-            color: #888888;
+            padding: 40px var(--page-padding-x);
+            background-color: var(--surface-soft);
+            color: var(--text-soft);
             font-size: 12px;
             line-height: 1.5;
+            flex-shrink: 0;
         }
 
         .footer-content {
-            max-width: 800px;
+            width: 100%;
+            max-width: var(--content-width);
             margin: 0 auto;
-            padding: 0 20px;
-            box-sizing: border-box;
         }
 
         .footer-logo {
@@ -340,12 +166,12 @@
 
         .footer-official {
             color: #777777;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 3px;
         }
 
         .footer-disclaimer {
-            color: #888888;
+            color: var(--text-soft);
             margin-bottom: 10px;
         }
 
@@ -359,13 +185,12 @@
 
         .footer-links a {
             color: #777777;
-            text-decoration: none;
             border-bottom: 1px solid #D0D0D0;
         }
 
         .footer-links a:hover {
-            color: #F2A900;
-            border-bottom-color: #F2A900;
+            color: var(--joie-yellow);
+            border-bottom-color: var(--joie-yellow);
         }
 
         .footer-separator {
@@ -373,21 +198,288 @@
         }
 
         @media (max-width: 600px) {
-            .top-header {
-                padding: 10px 15px;
+            :root {
+                --page-padding-x: 15px;
+                --header-logo-height: 32px;
             }
 
-            .logo-container {
-                height: 32px;
+            .top-header {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            .header-content {
+                gap: 12px;
             }
 
             .lang-btn {
+                min-width: 38px;
                 padding: 5px 10px;
                 font-size: 12px;
             }
 
+            .site-footer {
+                margin-top: 34px;
+                padding-top: 35px;
+                padding-bottom: 35px;
+                font-size: 12px;
+            }
+
+            .footer-logo {
+                height: 16px;
+                margin-bottom: 8px;
+            }
+
+            .footer-official,
+            .footer-disclaimer,
+            .footer-links {
+                font-size: 11px;
+            }
+
+            .footer-links {
+                gap: 4px 7px;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--content-width);
+            margin: 0 auto;
+            padding: 25px var(--page-padding-x) 20px;
+            flex: 1 0 auto;
+        }
+
+        h1 {
+            color: var(--text-main);
+            margin-bottom: 2px;
+            font-size: 30px;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: var(--text-main);
+            margin-bottom: 16px;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .search-section {
+            background: var(--surface);
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .input-group {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            min-width: 0;
+            padding: 12px 16px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            font-size: 15px;
+            background-color: var(--surface-soft);
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--joie-yellow);
+            background-color: var(--surface);
+        }
+
+        input[type="text"]::placeholder {
+            color: #999999;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: 0;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.2;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--joie-yellow);
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--joie-yellow-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--surface);
+            color: var(--text-muted);
+            border: 1px solid #CCCCCC;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--surface-soft);
+            border-color: #999999;
+            color: var(--text-main);
+        }
+
+        .btn-location {
+            width: 100%;
+            background-color: var(--joie-yellow);
+            color: #FFFFFF;
+            font-weight: 700;
+        }
+
+        .btn-location:hover {
+            background-color: var(--joie-yellow-dark);
+        }
+
+        .btn-location:disabled {
+            background-color: var(--line);
+            color: #999999;
+            cursor: not-allowed;
+        }
+
+        .status-message {
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .status-info {
+            background-color: #E6F2FA;
+            color: var(--joie-blue);
+            border-left: 3px solid var(--joie-blue);
+        }
+
+        .status-error {
+            background-color: #FFEBEE;
+            color: #C62828;
+            border-left: 3px solid #C62828;
+        }
+
+        .status-success {
+            background-color: #FFF9E6;
+            color: var(--joie-yellow-dark);
+            border-left: 3px solid var(--joie-yellow);
+        }
+
+        .store-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .store-card {
+            background: var(--surface);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .store-card:hover {
+            border-color: var(--joie-yellow);
+            box-shadow: 0 2px 8px rgba(242, 169, 0, 0.15);
+        }
+
+        .store-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .store-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .store-distance {
+            background-color: var(--joie-blue);
+            color: #FFFFFF;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .store-address {
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .store-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .store-actions a {
+            padding: 9px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            border: 1px solid;
+        }
+
+        .btn-maps {
+            background-color: var(--surface);
+            color: var(--joie-yellow);
+            border-color: var(--joie-yellow);
+        }
+
+        .btn-maps:hover {
+            background-color: var(--joie-yellow);
+            color: #FFFFFF;
+        }
+
+        .btn-website {
+            background-color: var(--surface);
+            color: var(--text-muted);
+            border-color: #CCCCCC;
+        }
+
+        .btn-website:hover {
+            background-color: var(--surface-soft);
+            border-color: #999999;
+            color: var(--text-main);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #999999;
+            font-size: 15px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999999;
+            background: var(--surface-soft);
+            border-radius: 8px;
+            border: 1px solid var(--line);
+        }
+
+        @media (max-width: 600px) {
             .container {
-                padding: 20px 15px 15px 15px;
+                padding-top: 20px;
+                padding-bottom: 15px;
             }
 
             h1 {
@@ -399,8 +491,6 @@
             }
 
             .input-group {
-                display: flex;
-                flex-direction: row;
                 flex-wrap: wrap;
             }
 
@@ -427,51 +517,25 @@
             }
 
             .store-actions a {
-                text-align: center;
                 flex: 1;
-            }
-
-            .site-footer {
-                margin-top: 26px;
-                padding: 35px 15px 35px 15px;
-                font-size: 12px;
-            }
-
-            .footer-content {
-                padding: 0;
-            }
-
-            .footer-logo {
-                height: 16px;
-                margin-bottom: 8px;
-                opacity: 0.62;
-            }
-
-            .footer-official,
-            .footer-disclaimer,
-            .footer-links {
-                font-size: 11px;
-            }
-
-            .footer-links {
-                gap: 4px 7px;
+                text-align: center;
             }
         }
+
     </style>
 </head>
 <body>
-    <!-- Header met logo en taalswitch -->
-    <div class="top-header">
+    <header class="top-header">
         <div class="header-content">
-            <div class="logo-container">
+            <a class="logo-container" href="./index.html" aria-label="Joie verkooppunten">
                 <img src="Joie-Logo.png" alt="Joie Logo">
-            </div>
-            <div class="language-switch">
-                <button class="lang-btn active" onclick="switchLanguage('nl')" data-lang="nl">NL</button>
-                <button class="lang-btn" onclick="switchLanguage('fr')" data-lang="fr">FR</button>
+            </a>
+            <div class="language-switch" aria-label="Taalkeuze">
+                <button class="lang-btn active" type="button" onclick="switchLanguage('nl')" data-lang="nl">NL</button>
+                <button class="lang-btn" type="button" onclick="switchLanguage('fr')" data-lang="fr">FR</button>
             </div>
         </div>
-    </div>
+    </header>
 
     <div class="container">
         <h1 data-i18n="title">Vind Joie bij jou in de buurt</h1>
@@ -602,9 +666,6 @@
                     btn.classList.remove('active');
                 }
             });
-
-            // Update HTML lang attribuut
-            document.documentElement.lang = lang;
 
             // Update alle vertaalbare elementen
             updateTranslations();
@@ -865,6 +926,10 @@
 
         // Initialiseer bij laden
         document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('joie_language');
+            const browserLang = (navigator.language || '').toLowerCase().startsWith('fr') ? 'fr' : 'nl';
+            switchLanguage(savedLang === 'fr' || savedLang === 'nl' ? savedLang : browserLang);
+
             loadStores();
 
             document.getElementById('locationInput').addEventListener('keypress', function(e) {
